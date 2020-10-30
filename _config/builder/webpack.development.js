@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const getAppData = require('./getAppData');
 
 const outputDir = path.resolve('public');
@@ -118,6 +119,7 @@ module.exports = (isProduction = false, _, appData = getAppData()) => {
         googleFonts,
       }),
       new CopyPlugin([{ from: '_static' }]),
+      new Dotenv()
     ],
     resolve: {
       plugins: [new TsconfigPathsPlugin()],
