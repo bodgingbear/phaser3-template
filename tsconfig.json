@@ -24,6 +24,7 @@
     "target": "es2016",
     "module": "es2015",
     "moduleResolution": "node",
+    "jsx": "preserve",
     "outDir": "dist",
     "skipLibCheck": true,
     "resolveJsonModule": true,

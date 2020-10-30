@@ -6,8 +6,14 @@ export class GameScene extends Phaser.Scene {
   }
 
   public create(): void {
-    const vid = this.add.video(1280 / 2, 720 / 2, 'demo');
-    vid.play(true);
-    vid.setDisplaySize(1280, 720);
+    const text = this.add.text(1280 / 2, 720 / 2, 'Here is the game', {
+      fontSize: '48px',
+      fill: '#fff',
+      fontFamily: 'Pixel miners',
+      align: 'center',
+      lineSpacing: 10,
+    });
+
+    text.setOrigin(0.5, 0.5);
   }
 }

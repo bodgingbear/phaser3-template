@@ -4,6 +4,7 @@ import './index.css';
 
 import { BootScene } from './scenes/BootScene';
 import { LoadingScene } from './scenes/LoadingScene';
+import { MainMenuScene } from './scenes/MainMenuScene';
 import { GameScene } from './scenes/GameScene';
 
 const game = new Phaser.Game({
@@ -11,7 +12,7 @@ const game = new Phaser.Game({
   banner: true,
   width: 1920,
   height: 1080,
-  scene: [BootScene, LoadingScene, GameScene],
+  scene: [BootScene, LoadingScene, MainMenuScene, GameScene],
   scale: {
     parent: 'app',
     mode: Phaser.Scale.FIT,

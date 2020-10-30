@@ -18,7 +18,7 @@ export class LoadingScene extends Phaser.Scene {
     // Assets go here
     this.load.video(
       'demo',
-      loadAsset('videos/spain.mp4'),
+      loadAsset('videos/demo.mp4'),
       'loadeddata',
       false,
       true
@@ -75,8 +75,6 @@ export class LoadingScene extends Phaser.Scene {
   };
 
   private changeScene = () => {
-    this.scene.start('GameScene');
-    // this.scene.start('MainMenuScene');
-    // this.scene.bringToTop('MainMenuScene');
+    this.scene.start('MainMenuScene');
   };
 }

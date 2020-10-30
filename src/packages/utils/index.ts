@@ -2,6 +2,7 @@ export { assertUnreachable } from './assertUnreachable';
 export { Bodyish } from './Bodyish';
 export { bound } from './bound';
 export { Button } from './Button';
+export { centerElement } from './centerElement';
 export { debugPhaserObject } from './debugPhaserObject';
 export { EventEmitter } from './EventEmitter';
 export { getAbsolutePosition } from './getAbsolutePosition';

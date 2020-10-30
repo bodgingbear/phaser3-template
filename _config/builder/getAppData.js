@@ -19,8 +19,7 @@ const isFontPreloaderValid = (fl) => {
 const getAppData = () => {
   const packageJson = require('../../package.json');
 
-  const appName = packageJson.name || 'Bodging Bear New Awesome Game!';
-  const appDescription = packageJson.description || '';
+  const appDescription = packageJson.description || 'Bodging Bear New Awesome Game!';
 
   if (!packageJson.description) {
     console.log(
@@ -36,7 +35,6 @@ const getAppData = () => {
     }
 
     return {
-      appName,
       appDescription,
     };
   }
@@ -60,7 +58,6 @@ const getAppData = () => {
     .filter(Boolean);
 
   return {
-    appName,
     appDescription,
     fontPreloader,
     googleFonts,
