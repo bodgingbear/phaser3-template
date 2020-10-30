@@ -1,3 +1,4 @@
+import { loadAsset } from 'packages/utils';
 import { shouldSkipIntro } from 'packages/utils/shouldSkipIntro';
 
 export class LoadingScene extends Phaser.Scene {
@@ -13,10 +14,23 @@ export class LoadingScene extends Phaser.Scene {
     });
   }
 
+  private loadAssets() {
+    // Assets go here
+    this.load.video(
+      'demo',
+      loadAsset('videos/spain.mp4'),
+      'loadeddata',
+      false,
+      true
+    );
+  }
+
   public preload(): void {
     if (!shouldSkipIntro()) {
       this.showLoadingAnimation();
     }
+
+    this.loadAssets();
   }
 
   public create(): void {}

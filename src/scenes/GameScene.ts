@@ -1,5 +1,3 @@
-import { ResetButton } from 'packages/reset-button';
-
 export class GameScene extends Phaser.Scene {
   public constructor() {
     super({
@@ -8,8 +6,8 @@ export class GameScene extends Phaser.Scene {
   }
 
   public create(): void {
-    this.add.image(1920 / 2, 1080 / 2, 'background');
-
-    new ResetButton(this, 110, 1005);
+    const vid = this.add.video(1280 / 2, 720 / 2, 'demo');
+    vid.play(true);
+    vid.setDisplaySize(1280, 720);
   }
 }
