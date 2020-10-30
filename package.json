@@ -8,12 +8,16 @@
     "build": "webpack --config ./_config/builder/webpack.production.js",
     "lint": "yarn lint:tsc && yarn lint:eslint",
     "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint src --ext .ts"
+    "lint:eslint": "eslint src --ext .ts",
+    "electron:dev": "electron ./electron.js",
+    "electron:dist": "electron-builder -m -c _config/electron/electron-builder.json"
   },
   "dependencies": {
     "phaser": "^3.22.0"
   },
-  "fontPreloader": ["Pixel miners"],
+  "fontPreloader": [
+    "Pixel miners"
+  ],
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-external-helpers": "^7.8.3",
@@ -32,6 +36,8 @@
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "dotenv-webpack": "^5.0.0",
+    "electron": "^10.1.5",
+    "electron-builder": "^22.9.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-config-prettier": "^6.11.0",
@@ -56,5 +62,6 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2",
     "yargs": "^15.3.1"
-  }
+  },
+  "main": "electron.js"
 }

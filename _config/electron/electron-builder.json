@@ -1,0 +1,16 @@
+{
+  "appId": "com.electron.bbear-phaser3-typescript",
+  "productName": "A Phaser 3 TypeScript Project Template",
+  "mac": {
+    "category": "com.electron.bbear-phaser3-typescript",
+    "target": "dmg",
+    "icon": "public/logo.icns"
+  },
+  "win": {
+    "target": "portable",
+    "icon": "public/favicon.ico"
+  },
+  "directories": {
+    "output": "electron-dist"
+  }
+}
