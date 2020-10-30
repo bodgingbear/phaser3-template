@@ -1,0 +1,6 @@
+{
+  "extends": "./_config/eslint-config-phaser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}

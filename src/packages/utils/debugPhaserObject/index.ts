@@ -1,0 +1,1 @@
+export { debugPhaserObject } from './debugPhaserObject';

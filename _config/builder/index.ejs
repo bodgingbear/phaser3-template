@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <meta charset="utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <% if (htmlWebpackPlugin.options.fontPreloader) { %>
+      <% htmlWebpackPlugin.options.googleFonts.forEach(fontUrl => { %>
+        <link href="<%= fontUrl %>" rel="stylesheet">
+      <% }) %>
+    <% } %>
+    <% if (htmlWebpackPlugin.options.fontPreloader) { %>
+    <style>
+      .font-loader {
+        position: absolute;
+        left: -100000px;
+        top: -100000px;
+      }
+    </style>
+    <% } %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <% if (htmlWebpackPlugin.options.fontPreloader) { %>
+    <ul class="font-loader">
+    <% htmlWebpackPlugin.options.fontPreloader.forEach(font => { %>
+      <li style="font-family: <%= font %>;"><%= font %></li>
+    <% }) %>
+    </ul>
+    <% } %>
+  </body>
+</html>

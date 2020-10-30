@@ -1,0 +1,1 @@
+export { bound } from './bound';
