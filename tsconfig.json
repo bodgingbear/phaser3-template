@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["src", "app-env.d.ts"],
   "compilerOptions": {
     "baseUrl": "src",
     "sourceMap": true,

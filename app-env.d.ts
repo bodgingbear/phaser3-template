@@ -1,9 +1,10 @@
-/* eslint-disable spaced-comment */
+/* eslint-disable spaced-comment, import/no-default-export */
 /// <reference types="phaser" />
 
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: 'development' | 'production' | 'test';
+    readonly SKIP_INTRO?: 'true' | 'false';
   }
 }
 
