@@ -10,7 +10,7 @@
     "lint:tsc": "tsc --noEmit",
     "lint:eslint": "eslint src --ext .ts",
     "electron:dev": "electron ./electron.js",
-    "electron:dist": "electron-builder -m -c _config/electron/electron-builder.json"
+    "electron:dist": "electron-builder -mw -c _config/electron/electron-builder.json"
   },
   "dependencies": {
     "phaser": "^3.22.0"
