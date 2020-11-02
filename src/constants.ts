@@ -22,7 +22,7 @@ export const TEAM: TeamMemberData[] = [
   // {
   //   name: 'Bogdan Bankowski',
   //   role: 'Programming',
-  //   imageKey: 'kacper_credits',
+  //   imageKey: 'bogdan_credits',
   //   imagePath: 'images/credits/bogdan.png',
   // },
   // {
