@@ -33,6 +33,7 @@ module.exports = {
     "global-require": 0,
     "no-plusplus": 0,
     "no-new": 0,
-    "new-cap": ["error", { "newIsCapExceptions": ["p5"] }]
+    "new-cap": 0,
+    "no-restricted-syntax": 0,
   }
 };

@@ -1,5 +1,6 @@
 import { loadAsset } from 'packages/utils';
 import { shouldSkipIntro } from 'packages/utils/shouldSkipIntro';
+import { TEAM } from '../constants';
 
 export class LoadingScene extends Phaser.Scene {
   private introImage!: Phaser.GameObjects.Sprite;
@@ -31,6 +32,7 @@ export class LoadingScene extends Phaser.Scene {
     }
 
     this.loadAssets();
+    this.loadCreditsAssets();
   }
 
   public create(): void {}
@@ -74,7 +76,24 @@ export class LoadingScene extends Phaser.Scene {
     this.introImage.on('animationcomplete', this.changeScene);
   };
 
+  private loadCreditsAssets = () => {
+    this.load.image('credits_logo', loadAsset('images/credits/logo.png'));
+    this.load.image(
+      'credits_logo_hover',
+      loadAsset('images/credits/logo_outline.png')
+    );
+    this.load.image(
+      'credits_background',
+      loadAsset('images/credits/gradient.png')
+    );
+    for (const { imageKey, imagePath } of TEAM) {
+      this.load.image(imageKey, loadAsset(imagePath));
+    }
+  };
+
   private changeScene = () => {
-    this.scene.start('MainMenuScene');
+    this.scene.start('CreditsScene');
+    // TODO
+    // this.scene.start('MainMenuScene');
   };
 }
