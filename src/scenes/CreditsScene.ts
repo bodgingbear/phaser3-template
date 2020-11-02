@@ -14,12 +14,18 @@ export class CreditsScene extends Phaser.Scene {
   }
 
   public create(): void {
-    const background = this.add.sprite(1280 / 2, 720 / 2, 'credits_background');
-    background.setDisplaySize(1280, 720);
+    const { width: DISPLAY_WIDTH, height: DISPLAY_HEIGHT } = this.cameras.main;
+
+    const background = this.add.sprite(
+      DISPLAY_WIDTH / 2,
+      DISPLAY_HEIGHT / 2,
+      'credits_background'
+    );
+    background.setDisplaySize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
     const logo = this.add
-      .sprite(1280 / 2, 64, 'credits_logo')
-      .setPosition(this.cameras.main.width - 32, this.cameras.main.height - 32)
+      .sprite(DISPLAY_WIDTH / 2, 64, 'credits_logo')
+      .setPosition(DISPLAY_WIDTH - 32, DISPLAY_HEIGHT - 32)
       .setOrigin(1, 1)
       .setScale(5);
 
@@ -34,16 +40,10 @@ export class CreditsScene extends Phaser.Scene {
       logo.setTexture('credits_logo');
     });
 
-    const backButton = new TextButton(
-      this,
-      32,
-      this.cameras.main.height - 32,
-      'Back',
-      {
-        originX: 0,
-        originY: 1,
-      }
-    );
+    const backButton = new TextButton(this, 32, DISPLAY_HEIGHT - 32, 'Back', {
+      originX: 0,
+      originY: 1,
+    });
 
     backButton.on('click', () => this.scene.start('MainMenuScene'));
 
@@ -72,10 +72,10 @@ export class CreditsScene extends Phaser.Scene {
       members[0].getDimensions().height * members.length +
       Y_OFFSET * (members.length - 1);
 
-    this.membersContainer.setX(this.cameras.main.width / 2 - maxWidth / 2);
+    this.membersContainer.setX(DISPLAY_WIDTH / 2 - maxWidth / 2);
 
     const logoSize = logo.displayHeight / 2 + logo.y;
-    const scrollArea = this.cameras.main.height - logoSize;
+    const scrollArea = DISPLAY_HEIGHT - logoSize;
 
     const scrollAreaY = logoSize + scrollArea / 2;
 
@@ -83,7 +83,7 @@ export class CreditsScene extends Phaser.Scene {
       this.tweens.add({
         targets: this.membersContainer,
         y: {
-          from: this.cameras.main.height,
+          from: DISPLAY_HEIGHT,
           to: -totalHeight,
         },
         duration: SCROLL_SPEED * members.length,
