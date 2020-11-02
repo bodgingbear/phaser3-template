@@ -4,10 +4,13 @@ type DefaultButtonEvents = 'click';
 
 type Styles = {
   buttonColor: number;
+  buttonColorAlpha: number;
   hoverButtonColor: number;
+  hoverButtonColorAlpha: number;
   borderColor: number;
   hoverBorderColor: number;
   hoverTextColor: number;
+  borderStrokeWidth: number;
   textColor: number;
   fontFamily: string;
   fontSize: string | number;
@@ -35,26 +38,31 @@ export type StylesOptions = Partial<Styles>;
 const hexColorToString = (hex: number) => `#${hex.toString(16)}`;
 
 const getStyles = (styles: StylesOptions = {}): Styles => ({
-  fontSize: '32px',
-  fontFamily: 'Open Sans',
+  fontSize: 16,
+  fontFamily: 'Pixel miners',
   buttonColor: 0xffffff,
-  hoverButtonColor: 0x000000,
-  borderColor: 0x000000,
+  buttonColorAlpha: 0,
+  hoverButtonColor: 0xffffff,
+  hoverButtonColorAlpha: 1,
+  borderColor: 0xffffff,
   hoverBorderColor: 0xffffff,
-  textColor: 0x000000,
-  hoverTextColor: 0xffffff,
+  textColor: 0xffffff,
+  hoverTextColor: 0x000000,
+  borderStrokeWidth: 4,
   ...styles,
 });
 
-export interface ButtonOptions {
-  styles?: StylesOptions;
-  disabled?: boolean;
-  uppercase?: boolean;
-  fixedWidth?: number;
-  fixedHeight?: number;
-  paddingX?: number;
-  paddingY?: number;
-}
+export type ButtonOptions = Partial<{
+  styles: StylesOptions;
+  disabled: boolean;
+  uppercase: boolean;
+  fixedWidth: number;
+  fixedHeight: number;
+  paddingX: number;
+  paddingY: number;
+  originX: number;
+  originY: number;
+}>;
 
 export class TextButton extends EventEmitter<DefaultButtonEvents> {
   private text: Phaser.GameObjects.Text;
@@ -109,26 +117,40 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
     this.text.setStyle(getStyles(this.buttonOptions.styles));
     this.updateSize();
 
-    const { buttonColor, borderColor, textColor } = getStyles(
-      this.buttonOptions.styles
+    const {
+      buttonColor,
+      borderColor,
+      textColor,
+      buttonColorAlpha,
+      borderStrokeWidth,
+    } = getStyles(this.buttonOptions.styles);
+    this.updateButtonStyles(
+      buttonColor,
+      borderColor,
+      textColor,
+      buttonColorAlpha,
+      borderStrokeWidth
     );
-    this.updateButtonStyles(buttonColor, borderColor, textColor);
   }
 
   public setPosition = (x: number, y: number) => {
-    this.x = x;
-    this.y = y;
+    const originX = this.buttonOptions.originX ?? 0.5;
+    const originY = this.buttonOptions.originY ?? 0.5;
+
+    this.rect.setPosition(
+      x + this.rect.displayWidth / 2 - this.rect.displayWidth * originX,
+      y + this.rect.displayHeight / 2 - this.rect.displayHeight * originY
+    );
 
     this.text.setPosition(
-      x - this.text.displayWidth / 2,
-      y - this.text.displayHeight / 2
-    );
-    this.rect.setPosition(
-      this.text.x + this.text.displayWidth / 2,
-      this.text.y + this.text.displayHeight / 2
+      this.rect.x - this.text.displayWidth / 2,
+      this.rect.y - this.text.displayHeight / 2
     );
 
     this.setDepth(this.depth);
+
+    this.x = x;
+    this.y = y;
   };
 
   private updateSize = () => {
@@ -178,27 +200,49 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
   };
 
   private onMouseOver = () => {
-    const { hoverButtonColor, hoverBorderColor, hoverTextColor } = getStyles(
-      this.buttonOptions.styles
-    );
+    const {
+      hoverButtonColor,
+      hoverBorderColor,
+      hoverTextColor,
+      hoverButtonColorAlpha,
+      borderStrokeWidth,
+    } = getStyles(this.buttonOptions.styles);
 
-    this.updateButtonStyles(hoverButtonColor, hoverBorderColor, hoverTextColor);
+    this.updateButtonStyles(
+      hoverButtonColor,
+      hoverBorderColor,
+      hoverTextColor,
+      hoverButtonColorAlpha,
+      borderStrokeWidth
+    );
   };
 
   private onMouseOut = () => {
-    const { buttonColor, borderColor, textColor } = getStyles(
-      this.buttonOptions.styles
+    const {
+      buttonColor,
+      borderColor,
+      textColor,
+      buttonColorAlpha,
+      borderStrokeWidth,
+    } = getStyles(this.buttonOptions.styles);
+    this.updateButtonStyles(
+      buttonColor,
+      borderColor,
+      textColor,
+      buttonColorAlpha,
+      borderStrokeWidth
     );
-    this.updateButtonStyles(buttonColor, borderColor, textColor);
   };
 
   private updateButtonStyles(
     buttonColor: number,
     borderColor: number,
-    textColor: number
+    textColor: number,
+    buttonColorAlpha: number,
+    strokeWidth: number
   ) {
-    this.rect.setFillStyle(buttonColor);
-    this.rect.setStrokeStyle(2, borderColor);
+    this.rect.setFillStyle(buttonColor, buttonColorAlpha);
+    this.rect.setStrokeStyle(strokeWidth, borderColor);
     this.text.setColor(hexColorToString(textColor));
   }
 

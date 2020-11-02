@@ -1,3 +1,6 @@
+import { TextButton } from 'packages/text-button';
+import { centerElement } from 'packages/utils';
+
 export class MainMenuScene extends Phaser.Scene {
   public constructor() {
     super({
@@ -8,10 +11,10 @@ export class MainMenuScene extends Phaser.Scene {
   public create(): void {
     const vid = this.add.video(1280 / 2, 720 / 2, 'demo');
     vid.play(true);
-    vid.setDisplaySize(1280, 720);
+    vid.setScale(0.9);
     vid.setAlpha(0.75);
 
-    const text = this.add.text(1280 / 2, 720 / 2 - 200, 'Phaser 3 Template', {
+    const text = this.add.text(1280 / 2, 64, 'Phaser 3 Template', {
       fontSize: '48px',
       fill: '#fff',
       fontFamily: 'Pixel miners',
@@ -19,12 +22,12 @@ export class MainMenuScene extends Phaser.Scene {
       lineSpacing: 10,
     });
 
-    text.setOrigin(0.5, 0.5);
+    centerElement(text);
 
-    const pressAnyButton = this.add.text(
+    const pressSpaceButton = this.add.text(
       1280 / 2,
-      720 / 2 + 200,
-      'Press any button to start',
+      720 - 32 - 32,
+      'Press SPACE to start',
       {
         fontSize: '24px',
         fill: '#fff',
@@ -34,10 +37,22 @@ export class MainMenuScene extends Phaser.Scene {
       }
     );
 
-    pressAnyButton.setOrigin(0.5, 0.5);
+    pressSpaceButton.setOrigin(0.5, 0.5);
 
-    this.input.keyboard.on('keydown', (): void => {
+    this.input.keyboard.addKey('SPACE').on('down', (): void => {
       this.scene.start('GameScene');
     });
+
+    const howToPlayButton = new TextButton(this, 32, 720 - 32, 'How to play', {
+      originX: 0,
+      originY: 1,
+    });
+    howToPlayButton.on('click', () => this.scene.start('HowToPlayScene'));
+
+    const creditsButton = new TextButton(this, 1280 - 32, 720 - 32, 'Credits', {
+      originX: 1,
+      originY: 1,
+    });
+    creditsButton.on('click', () => this.scene.start('CreditsScene'));
   }
 }
