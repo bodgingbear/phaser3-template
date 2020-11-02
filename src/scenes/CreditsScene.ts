@@ -3,6 +3,7 @@ import { TextButton } from 'packages/text-button';
 import { TEAM } from '../constants';
 
 const SCROLL_SPEED = 10000 / 6;
+const MEMBERS_MARGIN = 48;
 
 export class CreditsScene extends Phaser.Scene {
   private membersContainer!: Phaser.GameObjects.Container;
@@ -47,8 +48,6 @@ export class CreditsScene extends Phaser.Scene {
 
     backButton.on('click', () => this.scene.start('MainMenuScene'));
 
-    const Y_OFFSET = 48;
-
     this.membersContainer = this.add.container(0, 0);
 
     const members = TEAM.reduce((acc, teamMember, i) => {
@@ -57,7 +56,7 @@ export class CreditsScene extends Phaser.Scene {
         new TeamMember(
           this,
           0,
-          ((acc[0]?.getDimensions().height ?? 0) + Y_OFFSET) * i,
+          ((acc[0]?.getDimensions().height ?? 0) + MEMBERS_MARGIN) * i,
           teamMember,
           this.membersContainer
         ),
@@ -70,16 +69,11 @@ export class CreditsScene extends Phaser.Scene {
 
     const totalHeight =
       members[0].getDimensions().height * members.length +
-      Y_OFFSET * (members.length - 1);
+      MEMBERS_MARGIN * (members.length - 1);
 
     this.membersContainer.setX(DISPLAY_WIDTH / 2 - maxWidth / 2);
 
-    const logoSize = logo.displayHeight / 2 + logo.y;
-    const scrollArea = DISPLAY_HEIGHT - logoSize;
-
-    const scrollAreaY = logoSize + scrollArea / 2;
-
-    if (totalHeight > scrollArea) {
+    if (totalHeight > DISPLAY_HEIGHT) {
       this.tweens.add({
         targets: this.membersContainer,
         y: {
@@ -90,7 +84,7 @@ export class CreditsScene extends Phaser.Scene {
         repeat: -1,
       });
     } else {
-      this.membersContainer.setY(scrollAreaY - totalHeight / 2);
+      this.membersContainer.setY(DISPLAY_HEIGHT / 2 - totalHeight / 2);
     }
   }
 }
