@@ -92,8 +92,6 @@ export class LoadingScene extends Phaser.Scene {
   };
 
   private changeScene = () => {
-    this.scene.start('CreditsScene');
-    // TODO
-    // this.scene.start('MainMenuScene');
+    this.scene.start('MainMenuScene');
   };
 }
