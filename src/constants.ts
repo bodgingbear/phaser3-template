@@ -8,7 +8,7 @@ export const TEAM: TeamMemberData[] = [
     imagePath: 'images/credits/kacper.png',
   },
   {
-    name: 'Bartek Legiec',
+    name: 'Bartek Legięć',
     role: 'Programming & Art',
     imageKey: 'bartek_credits',
     imagePath: 'images/credits/bartek.png',
@@ -20,7 +20,7 @@ export const TEAM: TeamMemberData[] = [
   //   imagePath: 'images/credits/piotrek.png',
   // },
   // {
-  //   name: 'Bogdan Bankowski',
+  //   name: 'Bogdan Bańkowski',
   //   role: 'Programming',
   //   imageKey: 'bogdan_credits',
   //   imagePath: 'images/credits/bogdan.png',
@@ -38,7 +38,7 @@ export const TEAM: TeamMemberData[] = [
   //   imagePath: 'images/credits/maciek.png',
   // },
   // {
-  //   name: 'Rafal Piorek',
+  //   name: 'Rafał Piórek',
   //   role: 'Programming',
   //   imageKey: 'rafal_credits',
   //   imagePath: 'images/credits/rafal.png',

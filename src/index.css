@@ -1,7 +1,15 @@
 @font-face {
-  font-family: 'Pixel miners';
-  src: url('../assets/fonts/pixel-miners.woff2') format('woff'),
-       url('../assets/fonts/pixel-miners.woff') format('woff');
+  font-family: 'Courier';
+  src: url('../assets/fonts/PressStart2P.woff2') format('woff2'),
+       url('../assets/fonts/PressStart2P.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('../assets/fonts/PressStart2P.woff2') format('woff2'),
+       url('../assets/fonts/PressStart2P.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -10,7 +18,7 @@ html, body {
   height: 100%;
   width: 100%;
   background: #000;
-  font-family: 'Pixel miners';
+  font-family: 'Press Start 2P';
 }
 
 body {

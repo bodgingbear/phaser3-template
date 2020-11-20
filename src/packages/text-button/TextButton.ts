@@ -39,7 +39,7 @@ const hexColorToString = (hex: number) => `#${hex.toString(16)}`;
 
 const getStyles = (styles: StylesOptions = {}): Styles => ({
   fontSize: 16,
-  fontFamily: 'Pixel miners',
+  fontFamily: "'Press Start 2P'",
   buttonColor: 0xffffff,
   buttonColorAlpha: 0,
   hoverButtonColor: 0xffffff,

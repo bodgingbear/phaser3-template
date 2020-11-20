@@ -9,7 +9,6 @@ export class GameScene extends Phaser.Scene {
     const text = this.add.text(1280 / 2, 720 / 2, 'Here is the game', {
       fontSize: '48px',
       fill: '#fff',
-      fontFamily: 'Pixel miners',
       align: 'center',
       lineSpacing: 10,
     });

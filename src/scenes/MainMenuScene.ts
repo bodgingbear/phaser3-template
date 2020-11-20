@@ -17,7 +17,6 @@ export class MainMenuScene extends Phaser.Scene {
     const text = this.add.text(1280 / 2, 64, 'Phaser 3 Template', {
       fontSize: '48px',
       fill: '#fff',
-      fontFamily: 'Pixel miners',
       align: 'center',
       lineSpacing: 10,
     });
@@ -31,7 +30,6 @@ export class MainMenuScene extends Phaser.Scene {
       {
         fontSize: '24px',
         fill: '#fff',
-        fontFamily: 'Pixel miners',
         align: 'center',
         lineSpacing: 10,
       }

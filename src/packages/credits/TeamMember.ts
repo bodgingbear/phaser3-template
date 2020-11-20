@@ -33,7 +33,6 @@ export class TeamMember {
 
     const nameText = this.scene.add.text(0, 0, data.name, {
       fontSize: 32,
-      fontFamily: 'Pixel miners',
       align: 'left',
     });
 
@@ -43,7 +42,6 @@ export class TeamMember {
       data.role,
       {
         fontSize: 20,
-        fontFamily: 'Pixel miners',
         align: 'left',
         color: '#9E9E9E',
       }

@@ -16,7 +16,8 @@
     "phaser": "^3.22.0"
   },
   "fontPreloader": [
-    "Pixel miners"
+    "Press Start 2P",
+    "Courier"
   ],
   "devDependencies": {
     "@babel/core": "^7.9.0",

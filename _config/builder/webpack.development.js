@@ -94,7 +94,7 @@ module.exports = (isProduction = false, _, appData = getAppData()) => {
           use: ['@svgr/webpack', 'file-loader'],
         },
         {
-          test: /\.md$/,
+          test: /\.(md|txt)$/,
           use: ['raw-loader'],
         },
         {
