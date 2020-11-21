@@ -20,8 +20,17 @@
 
 
 
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+![Template showcase](assets/images/readme/intro.gif)
+
+In this repo you can find a template that is being used by the Bodging Bear team when starting new project.
+
+Even though this template includes Bodging Bear specific code (like intro or credits) feel free to use it in your own project.
+
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+### Table of Contents
 
 * [About the Project](#about-the-project)
   * [Features](#features)
@@ -32,17 +41,6 @@
 * [Available Commands](#available-commands)
 * [License](#license)
 * [Contact](#contact)
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-![Template showcase](assets/images/readme/intro.gif)
-
-In this repo you can find a template that is being used by the Bodging Bear team when starting new project.
-
-Even though this template includes Bodging Bear specific code (like intro or credits) feel free to use it in your own project.
 
 ### Features
 * Bodging Bear intro while loading
@@ -72,7 +70,7 @@ To get a local copy up and running follow these simple steps.
 You'll need to have the following programmes installed to run use template
 
 #### Node.js
-Download and install appropriate version from https://nodejs.org/en/download/
+Download and install appropriate version from [https://nodejs.org/en/download](https://nodejs.org/en/download)
 
 ### Installation
 
@@ -81,11 +79,14 @@ Download and install appropriate version from https://nodejs.org/en/download/
 ```sh
 git clone https://github.com/bodgingbear/new-game
 ```
-2. Install NPM packages using yarn
+3. Install NPM packages
 ```sh
-yarn install
+npm install
 ```
-
+4. Run game locally
+```sh
+npm start
+```
 
 
 <!-- USAGE EXAMPLES -->
@@ -93,27 +94,28 @@ yarn install
 
 | Command | Description |
 |---------|-------------|
-| `yarn start` | Build project and watch for changes, starts server on http://localhost:8080 |
-| `yarn build` | Builds project in production mode (enables minification, outputs files to `public` folder) |
-| `yarn lint:eslint` | Runs [`eslint`](https://eslint.org/) on the codebase checking for code style errors |
-| `yarn lint:tsc` | Runs TypeScript checks |
-| `yarn lint` | Combines `yarn lint:eslint` and `yarn lint:tsc` |
-| `electron:dev` | Runs Electron in the development mode |
-| `electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
+| `npm run start` | Build project and watch for changes, starts server on http://localhost:8080 |
+| `npm run build` | Builds project in production mode (enables minification, outputs files to `public` folder) |
+| `npm run lint:eslint` | Runs [`eslint`](https://eslint.org/) on the codebase checking for code style errors |
+| `npm run lint:tsc` | Runs TypeScript checks |
+| `npm run lint` | Combines `lint:eslint` and `lint:tsc` |
+| `npm run electron:dev` | Runs Electron in the development mode |
+| `npm run electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
 
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the _Creative Commons Attribution-NonCommercial 4.0 International_ License. See [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/) for a human-readable summary of it and [`LICENSE`](./LICENSE.md) for full license text.
+Distributed under the _Creative Commons Attribution-NonCommercial 4.0 International_ License.\
+See [https://creativecommons.org/licenses/by-nc/4.0](https://creativecommons.org/licenses/by-nc/4.0/) for a human-readable summary of it and [`LICENSE.md`](./LICENSE.md) for full license text.
 
-If you wish to use your game, that was created using this template, commercially drop us a message at [team@bodgingbear.dev](mailto:team@bodgingbear.dev).
+If you wish to commercially use your game that was created using this template, drop us a message at [team@bodgingbear.dev](mailto:team@bodgingbear.dev).
 
 
 <!-- CONTACT -->
 ## Contact
 
-Bartek ([@bibixx](https://twitter.com/bibix1999)) and Kacper ([@pietrzakacper](https://twitter.com/pietrzakacper)) - [team@bodgingbear.dev](mailto:team@bodgingbear.dev)
+Bartek ([@bibixx](https://twitter.com/bibix1999)) and Kacper ([@pietrzakacper](https://twitter.com/pietrzakacper)) – [team@bodgingbear.dev](mailto:team@bodgingbear.dev)
 
 Project Link: [https://github.com/bodgingbear/phaser3-template](https://github.com/bodgingbear/phaser3-template)
