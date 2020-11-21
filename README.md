@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/bodgingbear/phaser3-template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/images/readme/logo_transparent.png" alt="Bodging Bear" width="80" height="80">
   </a>
 
   <h3 align="center">Phaser 3 Template</h3>
@@ -38,7 +38,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot](./assets/images/intro.gif)
+![Template showcase](assets/images/readme/intro.gif)
 
 In this repo you can find a template that is being used by the Bodging Bear team when starting new project.
 
