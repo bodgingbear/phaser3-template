@@ -4,3 +4,4 @@ public
 yarn-error.log
 .env
 electron-dist
+yarn.lock
