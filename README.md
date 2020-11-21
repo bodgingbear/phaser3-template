@@ -108,12 +108,12 @@ yarn install
 
 Distributed under the _Creative Commons Attribution-NonCommercial 4.0 International_ License. See [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/) for a human-readable summary of it and [`LICENSE`](./LICENSE.md) for full license text.
 
-If you wish to use your game, that was created using this template, commercially drop us a message at [team@bodignbear.dev](mailto:team@bodgingbear.dev).
+If you wish to use your game, that was created using this template, commercially drop us a message at [team@bodgingbear.dev](mailto:team@bodgingbear.dev).
 
 
 <!-- CONTACT -->
 ## Contact
 
-Bartek ([@bibixx](https://twitter.com/bibix1999)) and Kacper ([@pietrzakacper](https://twitter.com/pietrzakacper)) - [team@bodignbear.dev](mailto:team@bodgingbear.dev)
+Bartek ([@bibixx](https://twitter.com/bibix1999)) and Kacper ([@pietrzakacper](https://twitter.com/pietrzakacper)) - [team@bodgingbear.dev](mailto:team@bodgingbear.dev)
 
 Project Link: [https://github.com/bodgingbear/phaser3-template](https://github.com/bodgingbear/phaser3-template)
