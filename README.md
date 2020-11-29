@@ -19,7 +19,6 @@
 </p>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -57,7 +56,6 @@ Even though this template includes Bodging Bear specific code (like intro or cre
 * [Webpack 4](https://webpack.js.org/)
 * [Electron](https://www.electronjs.org/)
 * Love ❤️
-
 
 
 <!-- GETTING STARTED -->
@@ -103,7 +101,6 @@ npm start
 | `npm run electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
 
 
-
 <!-- LICENSE -->
 ## License
 
@@ -116,6 +113,6 @@ If you wish to commercially use your game that was created using this template, 
 <!-- CONTACT -->
 ## Contact
 
-Bartek ([@bibixx](https://twitter.com/bibix1999)) and Kacper ([@pietrzakacper](https://twitter.com/pietrzakacper)) – [team@bodgingbear.dev](mailto:team@bodgingbear.dev)
+Bartek ([@bibix1999](https://twitter.com/bibix1999)) and Kacper ([@pietrzakacper](https://twitter.com/pietrzakacper)) – [team@bodgingbear.dev](mailto:team@bodgingbear.dev)
 
 Project Link: [https://github.com/bodgingbear/phaser3-template](https://github.com/bodgingbear/phaser3-template)
