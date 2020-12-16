@@ -92,6 +92,10 @@ export class LoadingScene extends Phaser.Scene {
   };
 
   private changeScene = () => {
-    this.scene.start('MainMenuScene');
+    if (shouldSkipIntro()) {
+      this.scene.start('MainMenuScene');
+    } else {
+      this.scene.start('IntroScene');
+    }
   };
 }
