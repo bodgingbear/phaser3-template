@@ -14,7 +14,7 @@ const tsconfigPath = path.resolve('tsconfig.json');
 module.exports = (isProduction = false, _, appData = getAppData()) => {
   const strict = isProduction || argv.strict || argv.s || false;
 
-  const { appDescription, fontPreloader, googleFonts } = appData;
+  const { appName, appDescription, fontPreloader, googleFonts } = appData;
 
   return {
     entry: entryFilePath,
@@ -113,7 +113,8 @@ module.exports = (isProduction = false, _, appData = getAppData()) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        title: appDescription,
+        title: appName,
+        description: appDescription,
         template: path.join(__dirname, 'index.ejs'),
         fontPreloader,
         googleFonts,

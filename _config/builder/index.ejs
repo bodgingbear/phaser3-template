@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
     <% if (htmlWebpackPlugin.options.fontPreloader) { %>
       <% htmlWebpackPlugin.options.googleFonts.forEach(fontUrl => { %>
         <link href="<%= fontUrl %>" rel="stylesheet">

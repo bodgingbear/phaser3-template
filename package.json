@@ -2,6 +2,8 @@
   "name": "@bbear/phaser3-typescript",
   "version": "1.0.0",
   "description": "A Phaser 3 TypeScript Project Template",
+  "appName": "A Phaser 3 TypeScript Project Template",
+  "appDescription": "Bodging Bear New Awesome Game!",
   "license": "CC-BY-NC-4.0",
   "scripts": {
     "start": "webpack-dev-server --config ./_config/builder/webpack.development.js",

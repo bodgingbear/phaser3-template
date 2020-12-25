@@ -19,9 +19,20 @@ const isFontPreloaderValid = (fl) => {
 const getAppData = () => {
   const packageJson = require('../../package.json');
 
-  const appDescription = packageJson.description || 'Bodging Bear New Awesome Game!';
+  const {
+    appName = 'Project Name',
+    appDescription = 'Bodging Bear New Awesome Game!',
+  } = packageJson;
 
-  if (!packageJson.description) {
+  if (!packageJson.appName) {
+    console.log(
+      printYellow(
+        "Couldn't find the appName field in package.json file. Defaulting name..."
+      )
+    );
+  }
+
+  if (!packageJson.appDescription) {
     console.log(
       printYellow(
         "Couldn't find the description field in package.json file. Defaulting description..."
@@ -35,6 +46,7 @@ const getAppData = () => {
     }
 
     return {
+      appName,
       appDescription,
     };
   }
@@ -58,6 +70,7 @@ const getAppData = () => {
     .filter(Boolean);
 
   return {
+    appName,
     appDescription,
     fontPreloader,
     googleFonts,
