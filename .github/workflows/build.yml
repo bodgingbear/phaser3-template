@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Check if package name has been changed
         run: exit 1
+      - if: ${{ failure() }}
+        run: echo "123"
 
   deploy:
     runs-on: ubuntu-latest
