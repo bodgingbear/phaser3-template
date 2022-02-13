@@ -10,7 +10,7 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     environment:
-      name: Production
+      name: NewFafarafa
       url: ${{ steps.print-url.outputs.url }}
 
     steps:
