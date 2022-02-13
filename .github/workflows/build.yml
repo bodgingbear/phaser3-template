@@ -7,8 +7,15 @@ on:
       - deployment-setup
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if package name has been changed
+        run: exit 1
+
   deploy:
     runs-on: ubuntu-latest
+    needs: check
     environment:
       name: Production
       url: ${{ steps.print-url.outputs.url }}

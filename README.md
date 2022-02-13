@@ -38,6 +38,7 @@ Even though this template includes Bodging Bear specific code (like intro or cre
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Available Commands](#available-commands)
+* [Deployment](#deployment)
 * [License](#license)
 * [Contact](#contact)
 
@@ -99,6 +100,20 @@ npm start
 | `npm run lint` | Combines `lint:eslint` and `lint:tsc` |
 | `npm run electron:dev` | Runs Electron in the development mode |
 | `npm run electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
+
+
+<!-- DEPLOYMENT -->
+## Deployment
+The template has built in [GitHub Action workflow](.github/workflows/build.yml) that deploys the page to AWS S3 Bucket. The folder into which the output will be copied is determined by the `name` field in `package.json` file.
+
+To successfully deploy the project you have to provide the following GitHub Action Secrets (for bodgingbear GitHub organization they are setup globally in the [Actions secrets tab](https://github.com/organizations/bodgingbear/settings/secrets/actions)).
+
+
+| Secret                  | Description                                                                                                                |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| `AWS_ACCESS_KEY_ID`     | Your AWS Access Key. [More info here.](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)        |
+| `AWS_SECRET_ACCESS_KEY` | Your AWS Secret Access Key. [More info here.](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) |
+| `AWS_S3_BUCKET`         | The name of the bucket you're syncing to.                                                                                  |
 
 
 <!-- LICENSE -->
