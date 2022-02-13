@@ -9,9 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # environment:
-    #   name: Production
-    #   url: https://bodgingbear.dev/
+    environment:
+      name: Production
+      url: ${{ steps.print-url.outputs.url }}
 
     steps:
     - uses: actions/checkout@v2
@@ -56,3 +56,8 @@ jobs:
         AWS_REGION: 'us-east-1'
         SOURCE_DIR: 'public'
         DEST_DIR: ${{ env.APP_NAME }}
+
+    - name: Print deployment url
+      id: print-url
+      run: |
+        echo "::set-output name=url::https://${{ env.APP_NAME }}.bodgingbear.dev"
