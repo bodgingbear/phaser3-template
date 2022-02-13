@@ -1,0 +1,62 @@
+name: Build and Upload Game
+
+on:
+  push:
+    branches:
+      - main
+      - deployment-setup
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # environment:
+    #   name: Production
+    #   url: https://bodgingbear.dev/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js v14
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+
+    - name: Set the app name to variable
+      run: |
+        echo "APP_NAME=$(cat package.json | jq .name)" >> $GITHUB_ENV
+
+    - name: Use the value
+      run: |
+        echo "${{ env.action_state }}" # This will output 'yellow'
+
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - uses: actions/cache@v2
+      name: Fetch cache
+      id: yarn-cache
+      with:
+        path: |
+          ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          ${{ github.workspace }}/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+        restore-keys: |
+          ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build the app
+      run: yarn build
+
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: 'us-east-1'
+        SOURCE_DIR: 'public'
+        OUT_DIR: 'phaser3-typescript'

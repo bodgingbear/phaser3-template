@@ -1,5 +1,5 @@
 {
-  "name": "@bbear/phaser3-typescript",
+  "name": "phaser3-typescript",
   "version": "1.0.0",
   "description": "A Phaser 3 TypeScript Project Template",
   "appName": "A Phaser 3 TypeScript Project Template",
