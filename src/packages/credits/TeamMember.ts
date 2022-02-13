@@ -32,7 +32,7 @@ export class TeamMember {
     const textContainer = this.scene.add.container(TEXT_X, 0);
 
     const nameText = this.scene.add.text(0, 0, data.name, {
-      fontSize: 32,
+      fontSize: '32px',
       align: 'left',
     });
 
@@ -41,7 +41,7 @@ export class TeamMember {
       nameText.displayHeight + ROLE_TEXT_MARGIN,
       data.role,
       {
-        fontSize: 20,
+        fontSize: '20px',
         align: 'left',
         color: '#9E9E9E',
       }

@@ -27,7 +27,7 @@ export const TEAM: TeamMemberData[] = [
   // },
   // {
   //   name: 'Kuba Pietrzak',
-  //   role: 'Sounds & QA',
+  //   role: 'Programming & Sounds',
   //   imageKey: 'kuba_credits',
   //   imagePath: 'images/credits/kuba.png',
   // },

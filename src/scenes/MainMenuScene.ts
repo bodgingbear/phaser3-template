@@ -14,26 +14,23 @@ export class MainMenuScene extends Phaser.Scene {
     vid.setScale(0.9);
     vid.setAlpha(0.75);
 
-    const text = this.add.text(1280 / 2, 64, 'Phaser 3 Template', {
-      fontSize: '48px',
-      fill: '#fff',
-      align: 'center',
-      lineSpacing: 10,
-    });
+    const text = this.add
+      .text(1280 / 2, 64, 'Phaser 3 Template', {
+        fontSize: '48px',
+        color: '#fff',
+        align: 'center',
+      })
+      .setLineSpacing(10);
 
     centerElement(text);
 
-    const pressSpaceButton = this.add.text(
-      1280 / 2,
-      720 - 32 - 32,
-      'Press SPACE to start',
-      {
+    const pressSpaceButton = this.add
+      .text(1280 / 2, 720 - 32 - 32, 'Press SPACE to start', {
         fontSize: '24px',
-        fill: '#fff',
+        color: '#fff',
         align: 'center',
-        lineSpacing: 10,
-      }
-    );
+      })
+      .setLineSpacing(10);
 
     pressSpaceButton.setOrigin(0.5, 0.5);
 
