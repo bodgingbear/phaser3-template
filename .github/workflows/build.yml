@@ -10,10 +10,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Check if package name has been changed
-        run: exit 1
-      - if: ${{ failure() }}
-        run: echo "123"
+        run: test ${{ env.GITHUB_REPOSITORY }} = "bodgingbear/phaser3-template" || test $(cat package.json | jq -r .name) != "phaser-bodgingbear-template"
 
   deploy:
     runs-on: ubuntu-latest
@@ -31,7 +30,7 @@ jobs:
 
     - name: Set the app name to variable
       run: |
-        echo "APP_NAME=$(cat package.json | jq .name)" >> $GITHUB_ENV
+        echo "APP_NAME=$(cat package.json | jq -r .name)" >> $GITHUB_ENV
 
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
@@ -62,7 +61,7 @@ jobs:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'us-east-1'
+        AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: 'public'
         DEST_DIR: ${{ env.APP_NAME }}
 
