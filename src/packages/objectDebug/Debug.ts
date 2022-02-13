@@ -232,7 +232,7 @@ export class Debug {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture: string | Phaser.Textures.Texture,
+    texture: string,
     originX: number = 0.5,
     originY: number = 0.5,
     debug: boolean = false
@@ -282,7 +282,7 @@ export class Debug {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture: string | Phaser.Textures.Texture,
+    texture: string,
     originX?: number,
     originY?: number
   ) {

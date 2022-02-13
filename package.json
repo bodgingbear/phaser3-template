@@ -15,7 +15,7 @@
     "electron:dist": "electron-builder -mw -c _config/electron/electron-builder.json"
   },
   "dependencies": {
-    "phaser": "^3.22.0"
+    "phaser": "3.22.0"
   },
   "fontPreloader": [
     "Press Start 2P",

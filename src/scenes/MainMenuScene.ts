@@ -9,7 +9,12 @@ export class MainMenuScene extends Phaser.Scene {
   }
 
   public create(): void {
-    const vid = this.add.video(1280 / 2, 720 / 2, 'demo');
+    // TODO: Casting
+    const vid = this.add.video(
+      1280 / 2,
+      720 / 2,
+      'demo'
+    ) as Phaser.GameObjects.Video;
     vid.play(true);
     vid.setScale(0.9);
     vid.setAlpha(0.75);
