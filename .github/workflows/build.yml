@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check if package name has been changed
-        run: test ${{ env.GITHUB_REPOSITORY }} = "bodgingbear/phaser3-template" || test $(cat package.json | jq -r .name) != "phaser-bodgingbear-template"
+        run: test $GITHUB_REPOSITORY = "bodgingbear/phaser3-template" || test $(cat package.json | jq -r .name) != "phaser-bodgingbear-template"
 
   deploy:
     runs-on: ubuntu-latest
