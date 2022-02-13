@@ -55,4 +55,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'
         SOURCE_DIR: 'public'
-        OUT_DIR: ${{ env.APP_NAME }}
+        DEST_DIR: ${{ env.APP_NAME }}
