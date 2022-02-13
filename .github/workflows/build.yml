@@ -24,10 +24,6 @@ jobs:
       run: |
         echo "APP_NAME=$(cat package.json | jq .name)" >> $GITHUB_ENV
 
-    - name: Use the value
-      run: |
-        echo "${{ env.action_state }}" # This will output 'yellow'
-
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -59,4 +55,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'us-east-1'
         SOURCE_DIR: 'public'
-        OUT_DIR: 'phaser3-typescript'
+        OUT_DIR: ${{ env.APP_NAME }}
