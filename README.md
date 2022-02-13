@@ -80,11 +80,11 @@ git clone https://github.com/bodgingbear/new-game
 ```
 3. Install NPM packages
 ```sh
-npm install
+yarn install
 ```
 4. Run game locally
 ```sh
-npm start
+yarn start
 ```
 
 
@@ -93,13 +93,13 @@ npm start
 
 | Command | Description |
 |---------|-------------|
-| `npm run start` | Build project and watch for changes, starts server on http://localhost:8080 |
-| `npm run build` | Builds project in production mode (enables minification, outputs files to `public` folder) |
-| `npm run lint:eslint` | Runs [`eslint`](https://eslint.org/) on the codebase checking for code style errors |
-| `npm run lint:tsc` | Runs TypeScript checks |
-| `npm run lint` | Combines `lint:eslint` and `lint:tsc` |
-| `npm run electron:dev` | Runs Electron in the development mode |
-| `npm run electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
+| `yarn run start` | Build project and watch for changes, starts server on http://localhost:8080 |
+| `yarn run build` | Builds project in production mode (enables minification, outputs files to `public` folder) |
+| `yarn run lint:eslint` | Runs [`eslint`](https://eslint.org/) on the codebase checking for code style errors |
+| `yarn run lint:tsc` | Runs TypeScript checks |
+| `yarn run lint` | Combines `lint:eslint` and `lint:tsc` |
+| `yarn run electron:dev` | Runs Electron in the development mode |
+| `yarn run electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
 
 
 <!-- DEPLOYMENT -->
@@ -108,13 +108,13 @@ The template has built in [GitHub Action workflow](.github/workflows/build.yml) 
 
 To successfully deploy the project you have to provide the following GitHub Action Secrets (for bodgingbear GitHub organization they are setup globally in the [Actions secrets tab](https://github.com/organizations/bodgingbear/settings/secrets/actions)).
 
-
 | Secret                  | Description                                                                                                                |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | `AWS_ACCESS_KEY_ID`     | Your AWS Access Key. [More info here.](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)        |
 | `AWS_SECRET_ACCESS_KEY` | Your AWS Secret Access Key. [More info here.](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) |
 | `AWS_S3_BUCKET`         | The name of the bucket you're syncing to.                                                                                  |
 | `AWS_REGION`            | The region where you created your bucket. Set to `us-east-1` by default. [Full list of regions here.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) |
+
 
 <!-- LICENSE -->
 ## License
