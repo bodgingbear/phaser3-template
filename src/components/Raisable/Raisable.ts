@@ -10,10 +10,7 @@ interface RaisableEvents {
   pointerOut: () => void;
 }
 
-export class Raisable extends EventEmitter<
-  keyof RaisableEvents,
-  RaisableEvents
-> {
+export class Raisable extends EventEmitter<RaisableEvents> {
   private currentTween?: Phaser.Tweens.Tween;
 
   constructor(

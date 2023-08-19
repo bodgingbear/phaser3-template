@@ -9,10 +9,7 @@ interface RotatableHandlers {
   dragEnd: () => void;
 }
 
-export class Rotatable extends EventEmitter<
-  keyof RotatableHandlers,
-  RotatableHandlers
-> {
+export class Rotatable extends EventEmitter<RotatableHandlers> {
   private startOffset: number = 0;
 
   private outOfBounds: boolean = false;

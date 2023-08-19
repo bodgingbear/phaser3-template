@@ -66,10 +66,7 @@ export type ButtonOptions = Partial<{
   originY: number;
 }>;
 
-export class TextButton extends EventEmitter<
-  keyof DefaultButtonEvents,
-  DefaultButtonEvents
-> {
+export class TextButton extends EventEmitter<DefaultButtonEvents> {
   private text: Phaser.GameObjects.Text;
 
   private depth: number = 10;

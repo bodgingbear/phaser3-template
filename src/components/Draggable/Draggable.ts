@@ -9,7 +9,7 @@ interface Handlers {
   click: () => void;
 }
 
-export class Draggable extends EventEmitter<keyof Handlers, Handlers> {
+export class Draggable extends EventEmitter<Handlers> {
   private dragStartPosition: Phaser.Math.Vector2 | null = null;
 
   private click: boolean = true;
