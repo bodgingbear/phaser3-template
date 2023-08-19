@@ -1,5 +1,5 @@
-import { TextButton } from 'packages/text-button';
-import { centerElement } from 'packages/utils';
+import { TextButton } from "../components/TextButton/TextButton";
+import { centerElement } from "../utils/centerElement/centerElement";
 
 export class MainMenuScene extends Phaser.Scene {
   public constructor() {
@@ -34,7 +34,7 @@ export class MainMenuScene extends Phaser.Scene {
 
     pressSpaceButton.setOrigin(0.5, 0.5);
 
-    this.input.keyboard.addKey('SPACE').on('down', (): void => {
+    this.input.keyboard!.addKey('SPACE').on('down', (): void => {
       this.scene.start('GameScene');
     });
 

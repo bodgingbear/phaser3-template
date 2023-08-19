@@ -1,6 +1,6 @@
-import { TeamMember } from 'packages/credits';
-import { TextButton } from 'packages/text-button';
 import { TEAM } from '../constants';
+import { TeamMember } from '../types/TeamMember';
+import { TextButton } from '../components/TextButton/TextButton';
 
 const SCROLL_SPEED = 10000 / 6;
 const MEMBERS_MARGIN = 48;

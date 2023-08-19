@@ -1,1 +1,0 @@
-export { Bodyish } from './Bodyish';

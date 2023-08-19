@@ -1,13 +1,13 @@
-import 'phaser';
+import "phaser";
 
-import './index.css';
+import "./index.css";
 
-import { BootScene } from './scenes/BootScene';
-import { LoadingScene } from './scenes/LoadingScene';
-import { MainMenuScene } from './scenes/MainMenuScene';
-import { GameScene } from './scenes/GameScene';
-import { HowToPlayScene } from './scenes/HowToPlayScene';
-import { CreditsScene } from './scenes/CreditsScene';
+import { BootScene } from "./scenes/BootScene";
+import { LoadingScene } from "./scenes/LoadingScene";
+import { MainMenuScene } from "./scenes/MainMenuScene";
+import { GameScene } from "./scenes/GameScene";
+import { HowToPlayScene } from "./scenes/HowToPlayScene";
+import { CreditsScene } from "./scenes/CreditsScene";
 
 const game = new Phaser.Game({
   type: Phaser.AUTO,

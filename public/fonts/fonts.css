@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Courier';
+  src: url('/fonts/PressStart2P.woff2') format('woff2'),
+       url('/fonts/PressStart2P.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('/fonts/PressStart2P.woff2') format('woff2'),
+       url('/fonts/PressStart2P.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

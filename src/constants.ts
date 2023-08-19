@@ -1,4 +1,4 @@
-import { TeamMemberData } from 'packages/credits';
+import { TeamMemberData } from "./types/TeamMember";
 
 export const TEAM: TeamMemberData[] = [
   {

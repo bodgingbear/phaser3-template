@@ -1,4 +1,4 @@
-import { loadAsset } from 'packages/utils';
+import { loadAsset } from "../utils/loadAsset/loadAsset";
 
 export class BootScene extends Phaser.Scene {
   public constructor() {

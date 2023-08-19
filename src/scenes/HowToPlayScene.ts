@@ -1,5 +1,5 @@
-import { TextButton } from 'packages/text-button';
-import { centerElement } from 'packages/utils';
+import { TextButton } from "../components/TextButton/TextButton";
+import { centerElement } from "../utils/centerElement/centerElement";
 
 export class HowToPlayScene extends Phaser.Scene {
   public constructor() {

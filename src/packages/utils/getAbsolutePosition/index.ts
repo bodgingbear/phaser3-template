@@ -1,1 +1,0 @@
-export { getAbsolutePosition } from './getAbsolutePosition';

@@ -1,37 +1,23 @@
 {
-  "include": ["src", "app-env.d.ts"],
   "compilerOptions": {
-    "baseUrl": "src",
-    "sourceMap": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
 
-    "removeComments": false,
-    "preserveConstEnums": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
 
+    /* Linting */
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "allowSyntheticDefaultImports": true,
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-
-    "esModuleInterop": true,
-    "target": "es2016",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "jsx": "preserve",
-    "outDir": "dist",
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-
-    "lib": [
-      "es2019",
-      "DOM"
-    ]
-  }
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
 }
