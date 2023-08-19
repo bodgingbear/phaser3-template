@@ -1,16 +1,16 @@
 export class GameScene extends Phaser.Scene {
   public constructor() {
     super({
-      key: 'GameScene',
+      key: "GameScene",
     });
   }
 
   public create(): void {
     const text = this.add
-      .text(1280 / 2, 720 / 2, 'Here is the game', {
-        fontSize: '48px',
-        color: '#fff',
-        align: 'center',
+      .text(1280 / 2, 720 / 2, "Here is the game", {
+        fontSize: "48px",
+        color: "#fff",
+        align: "center",
       })
       .setLineSpacing(10);
 

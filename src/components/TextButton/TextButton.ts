@@ -66,7 +66,10 @@ export type ButtonOptions = Partial<{
   originY: number;
 }>;
 
-export class TextButton extends EventEmitter<DefaultButtonEvents> {
+export class TextButton extends EventEmitter<
+  keyof DefaultButtonEvents,
+  DefaultButtonEvents
+> {
   private text: Phaser.GameObjects.Text;
 
   private depth: number = 10;
@@ -90,7 +93,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
       styles: {},
       disabled: false,
       uppercase: true,
-    }
+    },
   ) {
     super();
     this.text = this.scene.add.text(0, 0, "");
@@ -131,7 +134,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
       borderColor,
       textColor,
       buttonColorAlpha,
-      borderStrokeWidth
+      borderStrokeWidth,
     );
   }
 
@@ -141,12 +144,12 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
 
     this.rect.setPosition(
       x + this.rect.displayWidth / 2 - this.rect.displayWidth * originX,
-      y + this.rect.displayHeight / 2 - this.rect.displayHeight * originY
+      y + this.rect.displayHeight / 2 - this.rect.displayHeight * originY,
     );
 
     this.text.setPosition(
       this.rect.x - this.text.displayWidth / 2,
-      this.rect.y - this.text.displayHeight / 2
+      this.rect.y - this.text.displayHeight / 2,
     );
 
     this.setDepth(this.depth);
@@ -167,7 +170,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
       0,
       fixedWidth ?? this.text.displayWidth + paddingX * 2,
       fixedHeight ?? this.text.displayHeight + paddingY * 2,
-      buttonColor
+      buttonColor,
     );
 
     this.rect.setStrokeStyle(2, 0x000000);
@@ -215,7 +218,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
       hoverBorderColor,
       hoverTextColor,
       hoverButtonColorAlpha,
-      borderStrokeWidth
+      borderStrokeWidth,
     );
   };
 
@@ -232,7 +235,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
       borderColor,
       textColor,
       buttonColorAlpha,
-      borderStrokeWidth
+      borderStrokeWidth,
     );
   };
 
@@ -241,7 +244,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
     borderColor: number,
     textColor: number,
     buttonColorAlpha: number,
-    strokeWidth: number
+    strokeWidth: number,
   ) {
     this.rect.setFillStyle(buttonColor, buttonColorAlpha);
     this.rect.setStrokeStyle(strokeWidth, borderColor);

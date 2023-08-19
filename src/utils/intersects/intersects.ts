@@ -1,9 +1,9 @@
-import { Bodyish } from '../../types/Bodyish';
+import { Bodyish } from "../../types/Bodyish";
 
 export function intersectsInX(
   spriteA: Bodyish,
   spriteB: Bodyish,
-  customWidth?: number
+  customWidth?: number,
 ): boolean {
   const spriteALeft = spriteA.x - spriteA.displayWidth / 2;
   const spriteARight = spriteA.x + spriteA.displayWidth / 2;
@@ -33,7 +33,7 @@ export function intersectsInY(spriteA: Bodyish, spriteB: Bodyish): boolean {
 export function intersects(
   spriteA: Bodyish,
   spriteB: Bodyish,
-  customWidth?: number
+  customWidth?: number,
 ): boolean {
   return (
     intersectsInX(spriteA, spriteB, customWidth) &&

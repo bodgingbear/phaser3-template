@@ -12,7 +12,7 @@ export class Tooltip {
     private readonly offsetY: number,
     readonly styles: object = {},
     readonly setInteractive: boolean = true,
-    private disabled: boolean = false
+    private disabled: boolean = false,
   ) {
     this.textButton = new TextButton(
       this.scene,
@@ -26,7 +26,7 @@ export class Tooltip {
           fontSize: 28,
         },
         paddingY: 8,
-      }
+      },
     );
     this.textButton.disableInteractions();
 
@@ -34,8 +34,8 @@ export class Tooltip {
       this.element.setInteractive();
     }
 
-    this.element.addListener('pointerover', this.show);
-    this.element.addListener('pointerout', this.hide);
+    this.element.addListener("pointerover", this.show);
+    this.element.addListener("pointerout", this.hide);
 
     this.setPositions();
     this.hide();
@@ -48,7 +48,7 @@ export class Tooltip {
 
     this.textButton.setPosition(
       x,
-      elementTop - this.offsetY - this.textButton.getDimensions().height / 2
+      elementTop - this.offsetY - this.textButton.getDimensions().height / 2,
     );
   }
 

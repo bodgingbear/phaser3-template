@@ -2,18 +2,13 @@
   "name": "phaser-bodgingbear-template",
   "version": "1.0.0",
   "description": "A Phaser 3 TypeScript Project Template",
-  "appName": "A Phaser 3 TypeScript Project Template",
-  "appDescription": "Bodging Bear New Awesome Game!",
   "license": "CC-BY-NC-4.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "_build": "yarn type-check && vite build",
+    "build": "yarn type-check && vite build",
     "preview": "vite preview",
     "type-check": "tsc",
-    "lint": "yarn lint:tsc && yarn lint:eslint",
-    "lint:tsc": "tsc --noEmit",
-    "lint:eslint": "eslint src --ext .ts"
+    "lint": "eslint --ext .ts src/"
   },
   "dependencies": {
     "phaser": "^3.60.0",
@@ -21,6 +16,13 @@
   },
   "devDependencies": {
     "@types/webfontloader": "^1.6.35",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.2",
     "typescript": "^5.1.6",
     "vite": "^4.4.9"
   }

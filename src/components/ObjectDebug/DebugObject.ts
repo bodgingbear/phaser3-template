@@ -1,6 +1,6 @@
-import { bound } from '../../utils/bound/bound';
-import { Draggable } from '../Draggable/Draggable';
-import type { KeysConfig } from './types';
+import { bound } from "../../utils/bound/bound";
+import { Draggable } from "../Draggable/Draggable";
+import type { KeysConfig } from "./types";
 
 const VERTICAL_HANDLE_HEIGHT = 24;
 const ORIGIN_DISPLAY_RESOLUTION = 3;
@@ -13,7 +13,7 @@ const rgbaToHex = (r: number, g: number, b: number, a: number = 1) => {
   const aHex = Math.round(a * 255).toString(16);
 
   // eslint-disable-next-line prefer-template
-  return '#' + rHex + gHex + bHex + aHex;
+  return "#" + rHex + gHex + bHex + aHex;
 };
 
 type ObjectTypes =
@@ -75,7 +75,7 @@ export class DebugObject {
     private initialWidth: number,
     private initialHeight: number,
     private originX: number,
-    private originY: number
+    private originY: number,
   ) {
     this.rectangle = this.scene.add.rectangle(
       x,
@@ -83,7 +83,7 @@ export class DebugObject {
       initialWidth,
       initialHeight,
       0x00ff00,
-      UNSELECTED_ALPHA
+      UNSELECTED_ALPHA,
     );
     this.rectangle.setOrigin(originX, originY);
 
@@ -93,7 +93,7 @@ export class DebugObject {
       initialWidth,
       VERTICAL_HANDLE_HEIGHT,
       0xff0000,
-      0.2
+      0.2,
     );
     this.horizontalHandle = this.scene.add.rectangle(
       this.getHorizontalHandleX(x),
@@ -101,7 +101,7 @@ export class DebugObject {
       VERTICAL_HANDLE_HEIGHT,
       initialHeight,
       0x0000ff,
-      0.2
+      0.2,
     );
     this.bothHandle = this.scene.add.rectangle(
       this.getHorizontalHandleX(x),
@@ -109,7 +109,7 @@ export class DebugObject {
       VERTICAL_HANDLE_HEIGHT,
       VERTICAL_HANDLE_HEIGHT,
       0x0000ff,
-      1
+      1,
     );
 
     this.verticalHandle.setOrigin(originX, originY);
@@ -121,31 +121,31 @@ export class DebugObject {
       this.rectangle,
       undefined,
       false,
-      { grab: 'all-scroll', grabbing: 'all-scroll' }
+      { grab: "all-scroll", grabbing: "all-scroll" },
     );
-    this.rectangleDraggable.addListener('drag', this.onDrag);
-    this.rectangleDraggable.addListener('dragstart', this.onDragStart);
-    this.rectangleDraggable.addListener('dragend', this.onDragEnd);
+    this.rectangleDraggable.addListener("drag", this.onDrag);
+    this.rectangleDraggable.addListener("dragstart", this.onDragStart);
+    this.rectangleDraggable.addListener("dragend", this.onDragEnd);
 
     this.verticalHandleDraggable = new Draggable(
       this.scene,
       this.verticalHandle,
       undefined,
       false,
-      { grab: 'ns-resize', grabbing: 'ns-resize' }
+      { grab: "ns-resize", grabbing: "ns-resize" },
     );
-    this.verticalHandleDraggable.addListener('drag', this.onVerticalResizeDrag);
+    this.verticalHandleDraggable.addListener("drag", this.onVerticalResizeDrag);
 
     this.horizontalHandleDraggable = new Draggable(
       this.scene,
       this.horizontalHandle,
       undefined,
       false,
-      { grab: 'ew-resize', grabbing: 'ew-resize' }
+      { grab: "ew-resize", grabbing: "ew-resize" },
     );
     this.horizontalHandleDraggable.addListener(
-      'drag',
-      this.onHorizontalResizeDrag
+      "drag",
+      this.onHorizontalResizeDrag,
     );
 
     this.bothHandleDraggable = new Draggable(
@@ -153,12 +153,12 @@ export class DebugObject {
       this.bothHandle,
       undefined,
       false,
-      { grab: 'nwse-resize', grabbing: 'nwse-resize' }
+      { grab: "nwse-resize", grabbing: "nwse-resize" },
     );
-    this.bothHandleDraggable.addListener('drag', this.onBothResizeDrag);
+    this.bothHandleDraggable.addListener("drag", this.onBothResizeDrag);
 
-    this.text = this.scene.add.text(0, 0, '', {
-      color: 'black',
+    this.text = this.scene.add.text(0, 0, "", {
+      color: "black",
       backgroundColor: rgbaToHex(255, 255, 255, 0.5),
     });
 
@@ -166,24 +166,24 @@ export class DebugObject {
     this.updateOriginPointPosition();
 
     this.originDraggable = new Draggable(this.scene, this.originPoint);
-    this.originDraggable.addListener('drag', this.onOriginPointDrag);
-    this.originDraggable.addListener('dragend', this.onOriginPointDragEnd);
-    this.originDraggable.addListener('click', this.onOriginPointClick);
+    this.originDraggable.addListener("drag", this.onOriginPointDrag);
+    this.originDraggable.addListener("dragend", this.onOriginPointDragEnd);
+    this.originDraggable.addListener("click", this.onOriginPointClick);
 
-    this.shiftKey = this.scene.input.keyboard!.addKey('SHIFT');
+    this.shiftKey = this.scene.input.keyboard!.addKey("SHIFT");
 
-    this.altKey = this.scene.input.keyboard!.addKey('ALT');
-    this.altKey.on('up', this.onOrigin00ResizeStart);
-    this.altKey.on('down', this.onOrigin00ResizeEnd);
+    this.altKey = this.scene.input.keyboard!.addKey("ALT");
+    this.altKey.on("up", this.onOrigin00ResizeStart);
+    this.altKey.on("down", this.onOrigin00ResizeEnd);
 
     this.toggleKey = this.scene.input.keyboard!.addKey(toggleKeyString);
-    this.toggleKey.on('up', this.toggle);
+    this.toggleKey.on("up", this.toggle);
 
     this.printKey = this.scene.input.keyboard!.addKey(printKeyString);
-    this.printKey.on('up', this.print);
+    this.printKey.on("up", this.print);
 
     this.textKey = this.scene.input.keyboard!.addKey(textKeyString);
-    this.textKey.on('up', this.toggleTextOverlay);
+    this.textKey.on("up", this.toggleTextOverlay);
 
     this.onOrigin00ResizeStart();
     this.drawTextInfo();
@@ -194,13 +194,13 @@ export class DebugObject {
   private setKeyboardControls = () => {
     const arrows = this.scene.input.keyboard!.addKeys(
       {
-        up: 'up',
-        down: 'down',
-        left: 'left',
-        right: 'right',
+        up: "up",
+        down: "down",
+        left: "left",
+        right: "right",
       },
       undefined,
-      true
+      true,
     ) as {
       up: Phaser.Input.Keyboard.Key;
       down: Phaser.Input.Keyboard.Key;
@@ -231,16 +231,16 @@ export class DebugObject {
         this.onDrag(
           new Phaser.Math.Vector2(
             this.object.x + x * changeModifier,
-            this.object.y + y * changeModifier
-          )
+            this.object.y + y * changeModifier,
+          ),
         );
       }
     };
 
-    arrows.up.on('down', onChange(0, -1));
-    arrows.down.on('down', onChange(0, 1));
-    arrows.left.on('down', onChange(-1, 0));
-    arrows.right.on('down', onChange(1, 0));
+    arrows.up.on("down", onChange(0, -1));
+    arrows.down.on("down", onChange(0, 1));
+    arrows.left.on("down", onChange(-1, 0));
+    arrows.right.on("down", onChange(1, 0));
   };
 
   private getElementsList = () => {
@@ -286,7 +286,7 @@ export class DebugObject {
     this.horizontalHandle?.setPosition(this.getHorizontalHandleX(x), y);
     this.bothHandle?.setPosition(
       this.getHorizontalHandleX(x),
-      this.getVerticalHandleY(y)
+      this.getVerticalHandleY(y),
     );
     this.object?.setPosition(x, y);
     this.updateOriginPointPosition();
@@ -379,7 +379,7 @@ export class DebugObject {
     this.horizontalHandle?.setPosition(this.getHorizontalHandleX(x), y);
     this.bothHandle?.setPosition(
       this.getHorizontalHandleX(x),
-      this.getVerticalHandleY(y)
+      this.getVerticalHandleY(y),
     );
     this.updateOriginPointPosition();
     this.drawTextInfo();
@@ -403,7 +403,7 @@ export class DebugObject {
     this.horizontalHandle?.setPosition(this.getHorizontalHandleX(x), y);
     this.bothHandle?.setPosition(
       this.getHorizontalHandleX(x),
-      this.getVerticalHandleY(y)
+      this.getVerticalHandleY(y),
     );
     this.updateOriginPointPosition();
     this.drawTextInfo();
@@ -436,26 +436,26 @@ export class DebugObject {
   private updateHandlesPositions = () => {
     this.verticalHandle?.setDisplaySize(
       this.object.displayWidth,
-      VERTICAL_HANDLE_HEIGHT
+      VERTICAL_HANDLE_HEIGHT,
     );
     this.horizontalHandle?.setDisplaySize(
       VERTICAL_HANDLE_HEIGHT,
-      this.object.displayHeight
+      this.object.displayHeight,
     );
 
     this.verticalHandle?.setPosition(
       this.object.x,
-      this.getVerticalHandleY(this.object.y)
+      this.getVerticalHandleY(this.object.y),
     );
 
     this.horizontalHandle?.setPosition(
       this.getHorizontalHandleX(this.object.x),
-      this.object.y
+      this.object.y,
     );
 
     this.bothHandle?.setPosition(
       this.getHorizontalHandleX(this.object.x),
-      this.getVerticalHandleY(this.object.y)
+      this.getVerticalHandleY(this.object.y),
     );
   };
 
@@ -481,7 +481,7 @@ export class DebugObject {
         this.object.displayWidth * this.originX,
       this.object.y -
         this.object.displayHeight * this.object.originY +
-        this.object.displayHeight * this.originY
+        this.object.displayHeight * this.originY,
     );
   };
 

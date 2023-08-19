@@ -1,8 +1,8 @@
-import { Bodyish } from '../../types/Bodyish';
+import { Bodyish } from "../../types/Bodyish";
 
 const moveByParentPosition = (
   element: Bodyish | Phaser.GameObjects.Container,
-  vector: Phaser.Math.Vector2
+  vector: Phaser.Math.Vector2,
 ) => {
   const parent = element.parentContainer;
 
@@ -10,8 +10,8 @@ const moveByParentPosition = (
     vector.add(
       new Phaser.Math.Vector2(
         parent.x + parent.displayWidth / 2,
-        parent.y + parent.displayHeight / 2
-      )
+        parent.y + parent.displayHeight / 2,
+      ),
     );
 
     moveByParentPosition(parent, vector);

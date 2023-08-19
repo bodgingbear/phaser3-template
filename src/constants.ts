@@ -2,16 +2,16 @@ import { TeamMemberData } from "./types/TeamMember";
 
 export const TEAM: TeamMemberData[] = [
   {
-    name: 'Kacper Pietrzak',
-    role: 'Programming',
-    imageKey: 'kacper_credits',
-    imagePath: 'images/credits/kacper.png',
+    name: "Kacper Pietrzak",
+    role: "Programming",
+    imageKey: "kacper_credits",
+    imagePath: "images/credits/kacper.png",
   },
   {
-    name: 'Bartek Legięć',
-    role: 'Programming & Art',
-    imageKey: 'bartek_credits',
-    imagePath: 'images/credits/bartek.png',
+    name: "Bartek Legięć",
+    role: "Programming & Art",
+    imageKey: "bartek_credits",
+    imagePath: "images/credits/bartek.png",
   },
   // {
   //   name: 'Piotrek Szadkowski',

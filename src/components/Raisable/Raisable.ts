@@ -8,9 +8,12 @@ interface RaisableEvents {
   click: () => void;
   pointerOver: () => void;
   pointerOut: () => void;
-};
+}
 
-export class Raisable extends EventEmitter<RaisableEvents> {
+export class Raisable extends EventEmitter<
+  keyof RaisableEvents,
+  RaisableEvents
+> {
   private currentTween?: Phaser.Tweens.Tween;
 
   constructor(
@@ -22,7 +25,7 @@ export class Raisable extends EventEmitter<RaisableEvents> {
     private readonly raisingTarget:
       | Bodyish
       | Phaser.GameObjects.Container = element,
-    private readonly easing: Easing = DEFAULT_EASING
+    private readonly easing: Easing = DEFAULT_EASING,
   ) {
     super();
 
@@ -30,13 +33,13 @@ export class Raisable extends EventEmitter<RaisableEvents> {
       useHandCursor: true,
     });
 
-    this.element.addListener('pointerup', this.onPointerUp);
-    this.element.addListener('pointerover', this.onMouseOver);
-    this.element.addListener('pointerout', this.onMouseOut);
+    this.element.addListener("pointerup", this.onPointerUp);
+    this.element.addListener("pointerover", this.onMouseOver);
+    this.element.addListener("pointerout", this.onMouseOut);
   }
 
   onPointerUp = () => {
-    this.emit('click');
+    this.emit("click");
   };
 
   onMouseOver = () => {
@@ -63,7 +66,7 @@ export class Raisable extends EventEmitter<RaisableEvents> {
 
     this.currentTween = this.scene.tweens.add(config);
 
-    this.emit('pointerOver');
+    this.emit("pointerOver");
   };
 
   onMouseOut = () => {
@@ -90,7 +93,7 @@ export class Raisable extends EventEmitter<RaisableEvents> {
 
     this.currentTween = this.scene.tweens.add(config);
 
-    this.emit('pointerOut');
+    this.emit("pointerOut");
   };
 
   getHoverPaneY() {

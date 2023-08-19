@@ -1,7 +1,7 @@
-import { Bodyish } from '../../types/Bodyish';
-import { EventEmitter } from '../../utils/EventEmitter/EventEmitter';
-import { getAbsolutePosition } from '../../utils/getAbsolutePosition/getAbsolutePosition';
-import { getAngle, getPositiveAngle } from './Rotatable.utils';
+import { Bodyish } from "../../types/Bodyish";
+import { EventEmitter } from "../../utils/EventEmitter/EventEmitter";
+import { getAbsolutePosition } from "../../utils/getAbsolutePosition/getAbsolutePosition";
+import { getAngle, getPositiveAngle } from "./Rotatable.utils";
 
 interface RotatableHandlers {
   dragStart: () => void;
@@ -10,6 +10,7 @@ interface RotatableHandlers {
 }
 
 export class Rotatable extends EventEmitter<
+  keyof RotatableHandlers,
   RotatableHandlers
 > {
   private startOffset: number = 0;
@@ -20,17 +21,17 @@ export class Rotatable extends EventEmitter<
     private readonly obj: Bodyish,
     private readonly minAngle: number = 0,
     private readonly maxAngle: number = Math.PI * 2,
-    private readonly camera?: Phaser.Cameras.Scene2D.Camera
+    private readonly camera?: Phaser.Cameras.Scene2D.Camera,
   ) {
     super();
     this.obj.setInteractive({
       draggable: true,
-      cursor: 'grab',
+      cursor: "grab",
     });
 
-    this.obj.addListener('dragstart', this.onDragStart);
-    this.obj.addListener('drag', this.onDrag);
-    this.obj.addListener('dragend', this.onDragEnd);
+    this.obj.addListener("dragstart", this.onDragStart);
+    this.obj.addListener("drag", this.onDrag);
+    this.obj.addListener("dragend", this.onDragEnd);
   }
 
   onDragStart = (pointer: Phaser.Input.Pointer) => {
@@ -45,11 +46,11 @@ export class Rotatable extends EventEmitter<
     const deltaStartY = (downY + cameraY - y) * zoom;
 
     this.startOffset = getAngle(deltaStartX, deltaStartY) - this.obj.rotation;
-    this.emit('dragStart');
+    this.emit("dragStart");
   };
 
   onDragEnd = () => {
-    this.emit('dragEnd');
+    this.emit("dragEnd");
   };
 
   onDrag = (pointer: Phaser.Input.Pointer) => {
@@ -75,12 +76,12 @@ export class Rotatable extends EventEmitter<
     ) {
       const boundedAngle = Math.min(
         Math.max(offsetAngle, this.minAngle),
-        this.maxAngle
+        this.maxAngle,
       );
 
       if (!this.outOfBounds) {
         this.obj.setRotation(boundedAngle);
-        this.emit('drag', boundedAngle);
+        this.emit("drag", boundedAngle);
       }
 
       this.outOfBounds = true;
@@ -90,6 +91,6 @@ export class Rotatable extends EventEmitter<
 
     this.outOfBounds = false;
     this.obj.setRotation(offsetAngle);
-    this.emit('drag', offsetAngle);
+    this.emit("drag", offsetAngle);
   };
 }

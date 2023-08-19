@@ -14,7 +14,7 @@ export class Button extends Phaser.GameObjects.Sprite {
     texture: string,
     defaultFrame: Frame,
     private hoverFrame: Frame,
-    interactive?: object
+    interactive?: object,
   ) {
     super(scene, x, y, texture, defaultFrame);
     this.defaultFrame = defaultFrame;
@@ -25,8 +25,8 @@ export class Button extends Phaser.GameObjects.Sprite {
       ...interactive,
     });
 
-    this.on('pointerover', this.onMouseOver);
-    this.on('pointerout', this.onMouseOut);
+    this.on("pointerover", this.onMouseOver);
+    this.on("pointerout", this.onMouseOut);
   }
 
   private onMouseOver = () => {
@@ -54,7 +54,7 @@ export class Button extends Phaser.GameObjects.Sprite {
   public setTexture = (texture: string): this => {
     super.setTexture(
       texture,
-      this.hovered ? this.hoverFrame : this.defaultFrame
+      this.hovered ? this.hoverFrame : this.defaultFrame,
     );
 
     return this;

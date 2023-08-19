@@ -23,7 +23,7 @@ const game = new Phaser.Game({
     CreditsScene,
   ],
   scale: {
-    parent: 'app',
+    parent: "app",
     mode: Phaser.Scale.FIT,
     width: 1280,
     height: 720,
@@ -31,4 +31,4 @@ const game = new Phaser.Game({
   zoom: 5,
 });
 
-window.addEventListener('load', (): Phaser.Game => game);
+window.addEventListener("load", (): Phaser.Game => game);

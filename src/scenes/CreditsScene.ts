@@ -1,6 +1,6 @@
-import { TEAM } from '../constants';
-import { TeamMember } from '../types/TeamMember';
-import { TextButton } from '../components/TextButton/TextButton';
+import { TEAM } from "../constants";
+import { TeamMember } from "../types/TeamMember";
+import { TextButton } from "../components/TextButton/TextButton";
 
 const SCROLL_SPEED = 10000 / 6;
 const MEMBERS_MARGIN = 48;
@@ -10,7 +10,7 @@ export class CreditsScene extends Phaser.Scene {
 
   public constructor() {
     super({
-      key: 'CreditsScene',
+      key: "CreditsScene",
     });
   }
 
@@ -20,33 +20,33 @@ export class CreditsScene extends Phaser.Scene {
     const background = this.add.sprite(
       DISPLAY_WIDTH / 2,
       DISPLAY_HEIGHT / 2,
-      'credits_background'
+      "credits_background",
     );
     background.setDisplaySize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
     const logo = this.add
-      .sprite(DISPLAY_WIDTH / 2, 64, 'credits_logo')
+      .sprite(DISPLAY_WIDTH / 2, 64, "credits_logo")
       .setPosition(DISPLAY_WIDTH - 32, DISPLAY_HEIGHT - 32)
       .setOrigin(1, 1)
       .setScale(5);
 
     logo.setInteractive({ useHandCursor: true, pixelPerfect: true });
-    logo.on('pointerup', () => {
-      window.open('https://bodgingbear.dev');
+    logo.on("pointerup", () => {
+      window.open("https://bodgingbear.dev");
     });
-    logo.on('pointerover', () => {
-      logo.setTexture('credits_logo_hover');
+    logo.on("pointerover", () => {
+      logo.setTexture("credits_logo_hover");
     });
-    logo.on('pointerout', () => {
-      logo.setTexture('credits_logo');
+    logo.on("pointerout", () => {
+      logo.setTexture("credits_logo");
     });
 
-    const backButton = new TextButton(this, 32, DISPLAY_HEIGHT - 32, 'Back', {
+    const backButton = new TextButton(this, 32, DISPLAY_HEIGHT - 32, "Back", {
       originX: 0,
       originY: 1,
     });
 
-    backButton.on('click', () => this.scene.start('MainMenuScene'));
+    backButton.on("click", () => this.scene.start("MainMenuScene"));
 
     this.membersContainer = this.add.container(0, 0);
 
@@ -58,13 +58,13 @@ export class CreditsScene extends Phaser.Scene {
           0,
           ((acc[0]?.getDimensions().height ?? 0) + MEMBERS_MARGIN) * i,
           teamMember,
-          this.membersContainer
+          this.membersContainer,
         ),
       ];
     }, [] as TeamMember[]);
 
     const maxWidth = Math.max(
-      ...members.map((teamMember) => teamMember.getDimensions().width)
+      ...members.map((teamMember) => teamMember.getDimensions().width),
     );
 
     const totalHeight =

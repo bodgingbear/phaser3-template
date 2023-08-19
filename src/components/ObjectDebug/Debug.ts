@@ -1,12 +1,12 @@
-import { DebugObject } from './DebugObject';
-import type { AllowedKeys, KeysConfig } from './types';
+import { DebugObject } from "./DebugObject";
+import type { AllowedKeys, KeysConfig } from "./types";
 
 export class Debug {
-  private static TOGGLE_VISIBILITY_KEY: AllowedKeys = 'H';
+  private static TOGGLE_VISIBILITY_KEY: AllowedKeys = "H";
 
-  private static PRINT_KEY: AllowedKeys = 'P';
+  private static PRINT_KEY: AllowedKeys = "P";
 
-  private static TOGGLE_TEXT_KEY: AllowedKeys = 'T';
+  private static TOGGLE_TEXT_KEY: AllowedKeys = "T";
 
   private static debugObjects: DebugObject[] = [];
 
@@ -61,7 +61,7 @@ export class Debug {
     height: number,
     originX: number = 0.5,
     originY: number = 0.5,
-    debug: boolean = false
+    debug: boolean = false,
   ) {
     const gameZone = scene.add.zone(x, y, width, height);
     gameZone.setOrigin(originX, originY);
@@ -77,7 +77,7 @@ export class Debug {
         width,
         height,
         originX,
-        originY
+        originY,
       );
 
       Debug.debugObjects.push(newDO);
@@ -112,7 +112,7 @@ export class Debug {
     width: number,
     height: number,
     originX?: number,
-    originY?: number
+    originY?: number,
   ) {
     return Debug.createZone(scene, x, y, width, height, originX, originY, true);
   }
@@ -140,7 +140,7 @@ export class Debug {
     fillAlpha?: number,
     originX: number = 0.5,
     originY: number = 0.5,
-    debug: boolean = false
+    debug: boolean = false,
   ) {
     const gameZone = scene.add.rectangle(
       x,
@@ -148,7 +148,7 @@ export class Debug {
       width,
       height,
       fillColor,
-      fillAlpha
+      fillAlpha,
     );
     gameZone.setOrigin(originX, originY);
 
@@ -163,7 +163,7 @@ export class Debug {
         width,
         height,
         originX,
-        originY
+        originY,
       );
 
       Debug.debugObjects.push(newDO);
@@ -202,7 +202,7 @@ export class Debug {
     fillColor?: number,
     fillAlpha?: number,
     originX?: number,
-    originY?: number
+    originY?: number,
   ) {
     return Debug.createRectangle(
       scene,
@@ -214,7 +214,7 @@ export class Debug {
       fillAlpha,
       originX,
       originY,
-      true
+      true,
     );
   }
 
@@ -235,7 +235,7 @@ export class Debug {
     texture: string,
     originX: number = 0.5,
     originY: number = 0.5,
-    debug: boolean = false
+    debug: boolean = false,
   ) {
     const gameZone = scene.add.sprite(x, y, texture);
     gameZone.setOrigin(originX, originY);
@@ -251,7 +251,7 @@ export class Debug {
         gameZone.displayWidth,
         gameZone.displayHeight,
         originX,
-        originY
+        originY,
       );
 
       Debug.debugObjects.push(newDO);
@@ -284,7 +284,7 @@ export class Debug {
     y: number,
     texture: string,
     originX?: number,
-    originY?: number
+    originY?: number,
   ) {
     return Debug.createSprite(scene, x, y, texture, originX, originY, true);
   }

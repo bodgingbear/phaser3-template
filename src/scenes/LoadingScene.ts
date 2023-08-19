@@ -23,7 +23,7 @@ export class LoadingScene extends Phaser.Scene {
     this.load.addFile(
       new FontFile(this.load, "Press Start 2P", {
         custom: ["Courier", "Press Start 2P"],
-      })
+      }),
     );
   }
 
@@ -54,7 +54,7 @@ export class LoadingScene extends Phaser.Scene {
     this.introImage.setOrigin(0, 0);
     this.introImage.setDisplaySize(
       this.cameras.main.width,
-      this.cameras.main.height
+      this.cameras.main.height,
     );
 
     this.introImage.anims.play("intro-start");
@@ -66,7 +66,7 @@ export class LoadingScene extends Phaser.Scene {
         if (animation.key === "intro-loop") {
           this.timesLooped += 1;
         }
-      }
+      },
     );
   };
 
@@ -81,11 +81,11 @@ export class LoadingScene extends Phaser.Scene {
     this.load.image("credits_logo", loadAsset("images/credits/logo.png"));
     this.load.image(
       "credits_logo_hover",
-      loadAsset("images/credits/logo_outline.png")
+      loadAsset("images/credits/logo_outline.png"),
     );
     this.load.image(
       "credits_background",
-      loadAsset("images/credits/gradient.png")
+      loadAsset("images/credits/gradient.png"),
     );
     for (const { imageKey, imagePath } of TEAM) {
       this.load.image(imageKey, loadAsset(imagePath));

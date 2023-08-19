@@ -19,7 +19,7 @@ export class TeamMember {
     x: number,
     y: number,
     data: TeamMemberData,
-    groupContainer: Phaser.GameObjects.Container
+    groupContainer: Phaser.GameObjects.Container,
   ) {
     this.container = this.scene.add.container(x, y);
 
@@ -32,8 +32,8 @@ export class TeamMember {
     const textContainer = this.scene.add.container(TEXT_X, 0);
 
     const nameText = this.scene.add.text(0, 0, data.name, {
-      fontSize: '32px',
-      align: 'left',
+      fontSize: "32px",
+      align: "left",
     });
 
     const roleText = this.scene.add.text(
@@ -41,10 +41,10 @@ export class TeamMember {
       nameText.displayHeight + ROLE_TEXT_MARGIN,
       data.role,
       {
-        fontSize: '20px',
-        align: 'left',
-        color: '#9E9E9E',
-      }
+        fontSize: "20px",
+        align: "left",
+        color: "#9E9E9E",
+      },
     );
 
     this.width =
