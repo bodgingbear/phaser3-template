@@ -1,10 +1,4 @@
-import WebFont, {
-  Custom,
-  Fontdeck,
-  Google,
-  Monotype,
-  Typekit,
-} from "webfontloader";
+import WebFont, { Custom, Fontdeck, Google, Monotype, Typekit } from "webfontloader";
 
 export class FontFile extends Phaser.Loader.File {
   constructor(

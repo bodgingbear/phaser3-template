@@ -17,11 +17,7 @@ export class CreditsScene extends Phaser.Scene {
   public create(): void {
     const { width: DISPLAY_WIDTH, height: DISPLAY_HEIGHT } = this.cameras.main;
 
-    const background = this.add.sprite(
-      DISPLAY_WIDTH / 2,
-      DISPLAY_HEIGHT / 2,
-      "credits_background",
-    );
+    const background = this.add.sprite(DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, "credits_background");
     background.setDisplaySize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
     const logo = this.add
@@ -63,13 +59,9 @@ export class CreditsScene extends Phaser.Scene {
       ];
     }, [] as TeamMember[]);
 
-    const maxWidth = Math.max(
-      ...members.map((teamMember) => teamMember.getDimensions().width),
-    );
+    const maxWidth = Math.max(...members.map((teamMember) => teamMember.getDimensions().width));
 
-    const totalHeight =
-      members[0].getDimensions().height * members.length +
-      MEMBERS_MARGIN * (members.length - 1);
+    const totalHeight = members[0].getDimensions().height * members.length + MEMBERS_MARGIN * (members.length - 1);
 
     this.membersContainer.setX(DISPLAY_WIDTH / 2 - maxWidth / 2);
 

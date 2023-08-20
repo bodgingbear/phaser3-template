@@ -1,15 +1,11 @@
 import { Bodyish } from "../../types/Bodyish";
 
-export function intersectsInX(
-  spriteA: Bodyish,
-  spriteB: Bodyish,
-  customWidth?: number,
-): boolean {
+export function intersectsInX(spriteA: Bodyish, spriteB: Bodyish, customSpriteBWidth?: number): boolean {
   const spriteALeft = spriteA.x - spriteA.displayWidth / 2;
   const spriteARight = spriteA.x + spriteA.displayWidth / 2;
 
-  const spriteBLeft = spriteB.x - (customWidth || spriteB.displayWidth) / 2;
-  const spriteBRight = spriteB.x + (customWidth || spriteB.displayWidth) / 2;
+  const spriteBLeft = spriteB.x - (customSpriteBWidth ?? spriteB.displayWidth) / 2;
+  const spriteBRight = spriteB.x + (customSpriteBWidth ?? spriteB.displayWidth) / 2;
 
   const leftCheck = spriteARight >= spriteBLeft;
   const rightCheck = spriteALeft <= spriteBRight;
@@ -17,12 +13,12 @@ export function intersectsInX(
   return leftCheck && rightCheck;
 }
 
-export function intersectsInY(spriteA: Bodyish, spriteB: Bodyish): boolean {
+export function intersectsInY(spriteA: Bodyish, spriteB: Bodyish, customSpriteBHeight?: number): boolean {
   const spriteABottom = spriteA.y + spriteA.displayHeight / 2;
-  const spriteBTop = spriteB.y - spriteB.displayHeight / 2;
+  const spriteBTop = spriteB.y - (customSpriteBHeight ?? spriteB.displayHeight) / 2;
 
   const spriteATop = spriteA.y - spriteA.displayHeight / 2;
-  const spriteBBottom = spriteB.y + spriteB.displayHeight / 2;
+  const spriteBBottom = spriteB.y + (customSpriteBHeight ?? spriteB.displayHeight) / 2;
 
   const bottomCheck = spriteABottom >= spriteBTop;
   const topCheck = spriteATop <= spriteBBottom;
@@ -33,10 +29,8 @@ export function intersectsInY(spriteA: Bodyish, spriteB: Bodyish): boolean {
 export function intersects(
   spriteA: Bodyish,
   spriteB: Bodyish,
-  customWidth?: number,
+  customSpriteBWidth?: number,
+  customSpriteBHeight?: number,
 ): boolean {
-  return (
-    intersectsInX(spriteA, spriteB, customWidth) &&
-    intersectsInY(spriteA, spriteB)
-  );
+  return intersectsInX(spriteA, spriteB, customSpriteBWidth) && intersectsInY(spriteA, spriteB, customSpriteBHeight);
 }

@@ -52,10 +52,7 @@ export class Button extends Phaser.GameObjects.Sprite {
   };
 
   public setTexture = (texture: string): this => {
-    super.setTexture(
-      texture,
-      this.hovered ? this.hoverFrame : this.defaultFrame,
-    );
+    super.setTexture(texture, this.hovered ? this.hoverFrame : this.defaultFrame);
 
     return this;
   };

@@ -71,10 +71,7 @@ export class Rotatable extends EventEmitter<RotatableHandlers> {
       this.maxAngle !== Math.PI * 2 &&
       (offsetAngle > this.maxAngle || offsetAngle < this.minAngle)
     ) {
-      const boundedAngle = Math.min(
-        Math.max(offsetAngle, this.minAngle),
-        this.maxAngle,
-      );
+      const boundedAngle = Math.min(Math.max(offsetAngle, this.minAngle), this.maxAngle);
 
       if (!this.outOfBounds) {
         this.obj.setRotation(boundedAngle);

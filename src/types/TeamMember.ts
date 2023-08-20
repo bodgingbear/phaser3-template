@@ -36,19 +36,13 @@ export class TeamMember {
       align: "left",
     });
 
-    const roleText = this.scene.add.text(
-      0,
-      nameText.displayHeight + ROLE_TEXT_MARGIN,
-      data.role,
-      {
-        fontSize: "20px",
-        align: "left",
-        color: "#9E9E9E",
-      },
-    );
+    const roleText = this.scene.add.text(0, nameText.displayHeight + ROLE_TEXT_MARGIN, data.role, {
+      fontSize: "20px",
+      align: "left",
+      color: "#9E9E9E",
+    });
 
-    this.width =
-      TEXT_X + Math.max(nameText.displayWidth, roleText.displayWidth);
+    this.width = TEXT_X + Math.max(nameText.displayWidth, roleText.displayWidth);
 
     textContainer.setY(nameText.displayHeight);
     textContainer.add(nameText);

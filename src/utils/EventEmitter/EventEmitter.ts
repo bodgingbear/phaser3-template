@@ -2,10 +2,7 @@ type Fn = (...args: never[]) => void;
 
 export class EventEmitter<
   Handlers extends Record<Events, Fn>,
-  Events extends Extract<keyof Handlers, string> = Extract<
-    keyof Handlers,
-    string
-  >,
+  Events extends Extract<keyof Handlers, string> = Extract<keyof Handlers, string>,
 > extends Phaser.Events.EventEmitter {
   eventNames(): Events[] {
     return super.eventNames() as Events[];

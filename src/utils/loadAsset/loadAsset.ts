@@ -1,2 +1,1 @@
-export const loadAsset = (url: string) =>
-  new URL(`../../../assets/${url}`, import.meta.url).href;
+export const loadAsset = (url: string) => new URL(`../../../assets/${url}`, import.meta.url).href;

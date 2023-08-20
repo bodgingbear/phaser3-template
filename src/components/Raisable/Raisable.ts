@@ -19,9 +19,7 @@ export class Raisable extends EventEmitter<RaisableEvents> {
     private readonly hoverDuration: number,
     private readonly initialY: number,
     private readonly hoverYDelta: number,
-    private readonly raisingTarget:
-      | Bodyish
-      | Phaser.GameObjects.Container = element,
+    private readonly raisingTarget: Bodyish | Phaser.GameObjects.Container = element,
     private readonly easing: Easing = DEFAULT_EASING,
   ) {
     super();

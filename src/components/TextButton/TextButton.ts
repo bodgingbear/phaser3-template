@@ -119,20 +119,10 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
     this.text.setStyle(getStyles(this.buttonOptions.styles));
     this.updateSize();
 
-    const {
-      buttonColor,
-      borderColor,
-      textColor,
-      buttonColorAlpha,
-      borderStrokeWidth,
-    } = getStyles(this.buttonOptions.styles);
-    this.updateButtonStyles(
-      buttonColor,
-      borderColor,
-      textColor,
-      buttonColorAlpha,
-      borderStrokeWidth,
+    const { buttonColor, borderColor, textColor, buttonColorAlpha, borderStrokeWidth } = getStyles(
+      this.buttonOptions.styles,
     );
+    this.updateButtonStyles(buttonColor, borderColor, textColor, buttonColorAlpha, borderStrokeWidth);
   }
 
   public setPosition = (x: number, y: number) => {
@@ -144,10 +134,7 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
       y + this.rect.displayHeight / 2 - this.rect.displayHeight * originY,
     );
 
-    this.text.setPosition(
-      this.rect.x - this.text.displayWidth / 2,
-      this.rect.y - this.text.displayHeight / 2,
-    );
+    this.text.setPosition(this.rect.x - this.text.displayWidth / 2, this.rect.y - this.text.displayHeight / 2);
 
     this.setDepth(this.depth);
 
@@ -202,13 +189,9 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
   };
 
   private onMouseOver = () => {
-    const {
-      hoverButtonColor,
-      hoverBorderColor,
-      hoverTextColor,
-      hoverButtonColorAlpha,
-      borderStrokeWidth,
-    } = getStyles(this.buttonOptions.styles);
+    const { hoverButtonColor, hoverBorderColor, hoverTextColor, hoverButtonColorAlpha, borderStrokeWidth } = getStyles(
+      this.buttonOptions.styles,
+    );
 
     this.updateButtonStyles(
       hoverButtonColor,
@@ -220,20 +203,10 @@ export class TextButton extends EventEmitter<DefaultButtonEvents> {
   };
 
   private onMouseOut = () => {
-    const {
-      buttonColor,
-      borderColor,
-      textColor,
-      buttonColorAlpha,
-      borderStrokeWidth,
-    } = getStyles(this.buttonOptions.styles);
-    this.updateButtonStyles(
-      buttonColor,
-      borderColor,
-      textColor,
-      buttonColorAlpha,
-      borderStrokeWidth,
+    const { buttonColor, borderColor, textColor, buttonColorAlpha, borderStrokeWidth } = getStyles(
+      this.buttonOptions.styles,
     );
+    this.updateButtonStyles(buttonColor, borderColor, textColor, buttonColorAlpha, borderStrokeWidth);
   };
 
   private updateButtonStyles(

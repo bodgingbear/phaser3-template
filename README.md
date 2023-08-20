@@ -38,7 +38,6 @@ Even though this template includes Bodging Bear specific code (like intro or cre
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Available Commands](#available-commands)
-* [Deployment](#deployment)
 * [License](#license)
 * [Contact](#contact)
 
@@ -54,8 +53,7 @@ Even though this template includes Bodging Bear specific code (like intro or cre
 
 * [Phaser 3](https://phaser.io/)
 * [TypeScript](https://www.typescriptlang.org/)
-* [Webpack 4](https://webpack.js.org/)
-* [Electron](https://www.electronjs.org/)
+* [Vite](https://vitejs.dev/)
 * Love ❤️
 
 
@@ -69,7 +67,7 @@ To get a local copy up and running follow these simple steps.
 You'll need to have the following programmes installed to run use template
 
 #### Node.js
-Download and install appropriate version from [https://nodejs.org/en/download](https://nodejs.org/en/download)
+Download and install appropriate version from [https://nodejs.org/en/download](https://nodejs.org/en/download). Latest tested version is `v20.5.0`
 
 ### Installation
 
@@ -84,7 +82,7 @@ yarn install
 ```
 4. Run game locally
 ```sh
-yarn start
+yarn dev
 ```
 
 
@@ -93,27 +91,10 @@ yarn start
 
 | Command | Description |
 |---------|-------------|
-| `yarn run start` | Build project and watch for changes, starts server on http://localhost:8080 |
-| `yarn run build` | Builds project in production mode (enables minification, outputs files to `public` folder) |
-| `yarn run lint:eslint` | Runs [`eslint`](https://eslint.org/) on the codebase checking for code style errors |
-| `yarn run lint:tsc` | Runs TypeScript checks |
-| `yarn run lint` | Combines `lint:eslint` and `lint:tsc` |
-| `yarn run electron:dev` | Runs Electron in the development mode |
-| `yarn run electron:dist` | Builds the Electron version of the app. Outputs builds for MacOS and Windows |
-
-
-<!-- DEPLOYMENT -->
-## Deployment
-The template has built in [GitHub Action workflow](.github/workflows/build.yml) that deploys the page to AWS S3 Bucket. The folder into which the output will be copied is determined by the `name` field in `package.json` file.
-
-To successfully deploy the project you have to provide the following GitHub Action Secrets (for bodgingbear GitHub organization they are setup globally in the [Actions secrets tab](https://github.com/organizations/bodgingbear/settings/secrets/actions)).
-
-| Secret                  | Description                                                                                                                |
-|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| `AWS_ACCESS_KEY_ID`     | Your AWS Access Key. [More info here.](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)        |
-| `AWS_SECRET_ACCESS_KEY` | Your AWS Secret Access Key. [More info here.](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) |
-| `AWS_S3_BUCKET`         | The name of the bucket you're syncing to.                                                                                  |
-| `AWS_REGION`            | The region where you created your bucket. Set to `us-east-1` by default. [Full list of regions here.](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions) |
+| `yarn run dev` | Build project and watch for changes, starts server on http://localhost:5173 |
+| `yarn run build` | Builds project in production mode (enables minification, outputs files to `dist` folder) |
+| `yarn run lint` | Runs [`eslint`](https://eslint.org/) on the codebase checking for code style errors |
+| `yarn run type-check` | Runs TypeScript checks |
 
 
 <!-- LICENSE -->

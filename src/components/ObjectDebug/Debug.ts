@@ -142,14 +142,7 @@ export class Debug {
     originY: number = 0.5,
     debug: boolean = false,
   ) {
-    const gameZone = scene.add.rectangle(
-      x,
-      y,
-      width,
-      height,
-      fillColor,
-      fillAlpha,
-    );
+    const gameZone = scene.add.rectangle(x, y, width, height, fillColor, fillAlpha);
     gameZone.setOrigin(originX, originY);
 
     if (debug) {
@@ -204,18 +197,7 @@ export class Debug {
     originX?: number,
     originY?: number,
   ) {
-    return Debug.createRectangle(
-      scene,
-      x,
-      y,
-      width,
-      height,
-      fillColor,
-      fillAlpha,
-      originX,
-      originY,
-      true,
-    );
+    return Debug.createRectangle(scene, x, y, width, height, fillColor, fillAlpha, originX, originY, true);
   }
 
   /**
@@ -278,14 +260,7 @@ export class Debug {
    * @param originX X origin of the created texture, defaults to 0.5
    * @param originY Y origin of the created texture, defaults to 0.5
    */
-  static debugSprite(
-    scene: Phaser.Scene,
-    x: number,
-    y: number,
-    texture: string,
-    originX?: number,
-    originY?: number,
-  ) {
+  static debugSprite(scene: Phaser.Scene, x: number, y: number, texture: string, originX?: number, originY?: number) {
     return Debug.createSprite(scene, x, y, texture, originX, originY, true);
   }
 }

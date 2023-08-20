@@ -14,20 +14,14 @@ export class Tooltip {
     readonly setInteractive: boolean = true,
     private disabled: boolean = false,
   ) {
-    this.textButton = new TextButton(
-      this.scene,
-      1920 / 2,
-      100 + Math.random() * 400,
-      this.spriteText,
-      {
-        styles: {
-          buttonColor: 0x000000,
-          textColor: 0xffffff,
-          fontSize: 28,
-        },
-        paddingY: 8,
+    this.textButton = new TextButton(this.scene, 1920 / 2, 100 + Math.random() * 400, this.spriteText, {
+      styles: {
+        buttonColor: 0x000000,
+        textColor: 0xffffff,
+        fontSize: 28,
       },
-    );
+      paddingY: 8,
+    });
     this.textButton.disableInteractions();
 
     if (setInteractive) {
@@ -46,10 +40,7 @@ export class Tooltip {
 
     const elementTop = y - this.element.displayHeight * this.element.originY;
 
-    this.textButton.setPosition(
-      x,
-      elementTop - this.offsetY - this.textButton.getDimensions().height / 2,
-    );
+    this.textButton.setPosition(x, elementTop - this.offsetY - this.textButton.getDimensions().height / 2);
   }
 
   public setDisabled = (disabled: boolean) => {

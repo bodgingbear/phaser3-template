@@ -15,14 +15,7 @@ const game = new Phaser.Game({
   banner: true,
   width: 1920,
   height: 1080,
-  scene: [
-    BootScene,
-    LoadingScene,
-    MainMenuScene,
-    GameScene,
-    HowToPlayScene,
-    CreditsScene,
-  ],
+  scene: [BootScene, LoadingScene, MainMenuScene, GameScene, HowToPlayScene, CreditsScene],
   scale: {
     parent: "app",
     mode: Phaser.Scale.FIT,

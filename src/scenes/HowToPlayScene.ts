@@ -11,11 +11,7 @@ export class HowToPlayScene extends Phaser.Scene {
   public create(): void {
     const { width: DISPLAY_WIDTH, height: DISPLAY_HEIGHT } = this.cameras.main;
 
-    const background = this.add.sprite(
-      DISPLAY_WIDTH / 2,
-      DISPLAY_HEIGHT / 2,
-      "credits_background",
-    );
+    const background = this.add.sprite(DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, "credits_background");
     background.setDisplaySize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
     const howToPlayButton = new TextButton(this, 32, 720 - 32, "Back", {

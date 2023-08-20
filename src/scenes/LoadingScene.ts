@@ -52,22 +52,16 @@ export class LoadingScene extends Phaser.Scene {
   private showLoadingAnimation = () => {
     this.introImage = this.add.sprite(0, 0, "intro", 11);
     this.introImage.setOrigin(0, 0);
-    this.introImage.setDisplaySize(
-      this.cameras.main.width,
-      this.cameras.main.height,
-    );
+    this.introImage.setDisplaySize(this.cameras.main.width, this.cameras.main.height);
 
     this.introImage.anims.play("intro-start");
     this.introImage.anims.chain("intro-loop");
 
-    this.introImage.on(
-      "animationrepeat",
-      (animation: Phaser.Animations.Animation): void => {
-        if (animation.key === "intro-loop") {
-          this.timesLooped += 1;
-        }
-      },
-    );
+    this.introImage.on("animationrepeat", (animation: Phaser.Animations.Animation): void => {
+      if (animation.key === "intro-loop") {
+        this.timesLooped += 1;
+      }
+    });
   };
 
   private playEndingAnimation = () => {
@@ -79,14 +73,8 @@ export class LoadingScene extends Phaser.Scene {
 
   private loadCreditsAssets = () => {
     this.load.image("credits_logo", loadAsset("images/credits/logo.png"));
-    this.load.image(
-      "credits_logo_hover",
-      loadAsset("images/credits/logo_outline.png"),
-    );
-    this.load.image(
-      "credits_background",
-      loadAsset("images/credits/gradient.png"),
-    );
+    this.load.image("credits_logo_hover", loadAsset("images/credits/logo_outline.png"));
+    this.load.image("credits_background", loadAsset("images/credits/gradient.png"));
     for (const { imageKey, imagePath } of TEAM) {
       this.load.image(imageKey, loadAsset(imagePath));
     }

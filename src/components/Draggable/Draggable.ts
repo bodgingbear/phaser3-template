@@ -32,9 +32,7 @@ export class Draggable extends EventEmitter<Handlers> {
 
   private makeContainerDraggable() {
     if (!this.container) {
-      throw new Error(
-        "Cannot run makeContainerDraggable when container is undefined",
-      );
+      throw new Error("Cannot run makeContainerDraggable when container is undefined");
     }
 
     this.setInteractive();
@@ -45,53 +43,34 @@ export class Draggable extends EventEmitter<Handlers> {
       this.emit("dragstart");
     });
 
-    this.element.on(
-      "dragend",
-      (
-        _pointer: Phaser.Input.Pointer,
-        _x: number,
-        _y: number,
-        dropped: boolean,
-      ) => {
-        this.scene.input.setDefaultCursor("default");
-        this.dragStartPosition = null;
+    this.element.on("dragend", (_pointer: Phaser.Input.Pointer, _x: number, _y: number, dropped: boolean) => {
+      this.scene.input.setDefaultCursor("default");
+      this.dragStartPosition = null;
 
-        if (this.click) {
-          this.emit("click");
-        } else {
-          this.emit("dragend", dropped);
-        }
-      },
-    );
+      if (this.click) {
+        this.emit("click");
+      } else {
+        this.emit("dragend", dropped);
+      }
+    });
 
-    this.element.on(
-      "drag",
-      (_pointer: Phaser.Input.Pointer, x: number, y: number) => {
-        if (!this.container) {
-          throw new Error(
-            "Cannot run makeContainerDraggable when container is undefined",
-          );
-        }
+    this.element.on("drag", (_pointer: Phaser.Input.Pointer, x: number, y: number) => {
+      if (!this.container) {
+        throw new Error("Cannot run makeContainerDraggable when container is undefined");
+      }
 
-        if (this.dragStartPosition === null) {
-          return;
-        }
+      if (this.dragStartPosition === null) {
+        return;
+      }
 
-        const newPosition = new Phaser.Math.Vector2(
-          this.dragStartPosition.x + x,
-          this.dragStartPosition.y + y,
-        );
+      const newPosition = new Phaser.Math.Vector2(this.dragStartPosition.x + x, this.dragStartPosition.y + y);
 
-        this.emit("drag", newPosition);
-      },
-    );
+      this.emit("drag", newPosition);
+    });
 
-    this.element.on(
-      "drop",
-      (_pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
-        this.emit("drop", dropZone);
-      },
-    );
+    this.element.on("drop", (_pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+      this.emit("drop", dropZone);
+    });
   }
 
   private setInteractive() {
@@ -111,38 +90,24 @@ export class Draggable extends EventEmitter<Handlers> {
       this.emit("dragstart");
     });
 
-    this.element.on(
-      "dragend",
-      (
-        _pointer: Phaser.Input.Pointer,
-        _x: number,
-        _y: number,
-        dropped: boolean,
-      ) => {
-        this.scene.input.setDefaultCursor("default");
+    this.element.on("dragend", (_pointer: Phaser.Input.Pointer, _x: number, _y: number, dropped: boolean) => {
+      this.scene.input.setDefaultCursor("default");
 
-        if (this.click) {
-          this.emit("click");
-        } else {
-          this.emit("dragend", dropped);
-        }
-      },
-    );
+      if (this.click) {
+        this.emit("click");
+      } else {
+        this.emit("dragend", dropped);
+      }
+    });
 
-    this.element.on(
-      "drag",
-      (_pointer: Phaser.Input.Pointer, x: number, y: number) => {
-        this.click = false;
-        const newPosition = new Phaser.Math.Vector2(x, y);
-        this.emit("drag", newPosition);
-      },
-    );
+    this.element.on("drag", (_pointer: Phaser.Input.Pointer, x: number, y: number) => {
+      this.click = false;
+      const newPosition = new Phaser.Math.Vector2(x, y);
+      this.emit("drag", newPosition);
+    });
 
-    this.element.on(
-      "drop",
-      (_pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
-        this.emit("drop", dropZone);
-      },
-    );
+    this.element.on("drop", (_pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+      this.emit("drop", dropZone);
+    });
   }
 }

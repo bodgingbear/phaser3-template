@@ -16,10 +16,7 @@ const rgbaToHex = (r: number, g: number, b: number, a: number = 1) => {
   return "#" + rHex + gHex + bHex + aHex;
 };
 
-type ObjectTypes =
-  | Phaser.GameObjects.Zone
-  | Phaser.GameObjects.Rectangle
-  | Phaser.GameObjects.Sprite;
+type ObjectTypes = Phaser.GameObjects.Zone | Phaser.GameObjects.Rectangle | Phaser.GameObjects.Sprite;
 
 const SELECTED_ALPHA = 0.2;
 const UNSELECTED_ALPHA = 0.1;
@@ -64,11 +61,7 @@ export class DebugObject {
   constructor(
     private readonly scene: Phaser.Scene,
     private object: ObjectTypes,
-    {
-      toggle: toggleKeyString,
-      print: printKeyString,
-      text: textKeyString,
-    }: KeysConfig,
+    { toggle: toggleKeyString, print: printKeyString, text: textKeyString }: KeysConfig,
     private debugObjects: DebugObject[],
     x: number,
     y: number,
@@ -77,14 +70,7 @@ export class DebugObject {
     private originX: number,
     private originY: number,
   ) {
-    this.rectangle = this.scene.add.rectangle(
-      x,
-      y,
-      initialWidth,
-      initialHeight,
-      0x00ff00,
-      UNSELECTED_ALPHA,
-    );
+    this.rectangle = this.scene.add.rectangle(x, y, initialWidth, initialHeight, 0x00ff00, UNSELECTED_ALPHA);
     this.rectangle.setOrigin(originX, originY);
 
     this.verticalHandle = this.scene.add.rectangle(
@@ -116,45 +102,30 @@ export class DebugObject {
     this.horizontalHandle.setOrigin(originX, originY);
     this.bothHandle.setOrigin(originX, originY);
 
-    this.rectangleDraggable = new Draggable(
-      this.scene,
-      this.rectangle,
-      undefined,
-      false,
-      { grab: "all-scroll", grabbing: "all-scroll" },
-    );
+    this.rectangleDraggable = new Draggable(this.scene, this.rectangle, undefined, false, {
+      grab: "all-scroll",
+      grabbing: "all-scroll",
+    });
     this.rectangleDraggable.addListener("drag", this.onDrag);
     this.rectangleDraggable.addListener("dragstart", this.onDragStart);
     this.rectangleDraggable.addListener("dragend", this.onDragEnd);
 
-    this.verticalHandleDraggable = new Draggable(
-      this.scene,
-      this.verticalHandle,
-      undefined,
-      false,
-      { grab: "ns-resize", grabbing: "ns-resize" },
-    );
+    this.verticalHandleDraggable = new Draggable(this.scene, this.verticalHandle, undefined, false, {
+      grab: "ns-resize",
+      grabbing: "ns-resize",
+    });
     this.verticalHandleDraggable.addListener("drag", this.onVerticalResizeDrag);
 
-    this.horizontalHandleDraggable = new Draggable(
-      this.scene,
-      this.horizontalHandle,
-      undefined,
-      false,
-      { grab: "ew-resize", grabbing: "ew-resize" },
-    );
-    this.horizontalHandleDraggable.addListener(
-      "drag",
-      this.onHorizontalResizeDrag,
-    );
+    this.horizontalHandleDraggable = new Draggable(this.scene, this.horizontalHandle, undefined, false, {
+      grab: "ew-resize",
+      grabbing: "ew-resize",
+    });
+    this.horizontalHandleDraggable.addListener("drag", this.onHorizontalResizeDrag);
 
-    this.bothHandleDraggable = new Draggable(
-      this.scene,
-      this.bothHandle,
-      undefined,
-      false,
-      { grab: "nwse-resize", grabbing: "nwse-resize" },
-    );
+    this.bothHandleDraggable = new Draggable(this.scene, this.bothHandle, undefined, false, {
+      grab: "nwse-resize",
+      grabbing: "nwse-resize",
+    });
     this.bothHandleDraggable.addListener("drag", this.onBothResizeDrag);
 
     this.text = this.scene.add.text(0, 0, "", {
@@ -228,12 +199,7 @@ export class DebugObject {
         this.updateOriginPointPosition();
         this.drawTextInfo();
       } else {
-        this.onDrag(
-          new Phaser.Math.Vector2(
-            this.object.x + x * changeModifier,
-            this.object.y + y * changeModifier,
-          ),
-        );
+        this.onDrag(new Phaser.Math.Vector2(this.object.x + x * changeModifier, this.object.y + y * changeModifier));
       }
     };
 
@@ -244,14 +210,7 @@ export class DebugObject {
   };
 
   private getElementsList = () => {
-    return [
-      this.rectangle,
-      this.verticalHandle,
-      this.bothHandle,
-      this.horizontalHandle,
-      this.text,
-      this.originPoint,
-    ];
+    return [this.rectangle, this.verticalHandle, this.bothHandle, this.horizontalHandle, this.text, this.originPoint];
   };
 
   private disable = () => {
@@ -284,10 +243,7 @@ export class DebugObject {
     this.rectangle?.setPosition(x, y);
     this.verticalHandle?.setPosition(x, this.getVerticalHandleY(y));
     this.horizontalHandle?.setPosition(this.getHorizontalHandleX(x), y);
-    this.bothHandle?.setPosition(
-      this.getHorizontalHandleX(x),
-      this.getVerticalHandleY(y),
-    );
+    this.bothHandle?.setPosition(this.getHorizontalHandleX(x), this.getVerticalHandleY(y));
     this.object?.setPosition(x, y);
     this.updateOriginPointPosition();
     this.drawTextInfo();
@@ -305,11 +261,9 @@ export class DebugObject {
   private onOriginPointDrag = ({ x, y }: Phaser.Math.Vector2) => {
     this.setSelected(true);
     const left = this.object.x - this.object.displayWidth * this.object.originX;
-    const right =
-      this.object.x + this.object.displayWidth * (1 - this.object.originX);
+    const right = this.object.x + this.object.displayWidth * (1 - this.object.originX);
     const top = this.object.y - this.object.displayHeight * this.object.originY;
-    const bottom =
-      this.object.y + this.object.displayHeight * (1 - this.object.originY);
+    const bottom = this.object.y + this.object.displayHeight * (1 - this.object.originY);
 
     const boundedX = bound(left, right, x);
     const boundedY = bound(top, bottom, y);
@@ -343,14 +297,8 @@ export class DebugObject {
     const aspectRatio = this.object.displayHeight / this.object.displayWidth;
     const keepAspectRatio = this.shiftKey?.isDown;
 
-    const newWidth =
-      x -
-      this.object.x +
-      this.object.displayWidth * this.object.originX +
-      VERTICAL_HANDLE_HEIGHT;
-    const newHeight = keepAspectRatio
-      ? newWidth * aspectRatio
-      : this.object.displayHeight;
+    const newWidth = x - this.object.x + this.object.displayWidth * this.object.originX + VERTICAL_HANDLE_HEIGHT;
+    const newHeight = keepAspectRatio ? newWidth * aspectRatio : this.object.displayHeight;
 
     this.rectangle?.setDisplaySize(newWidth, newHeight);
     this.object?.setDisplaySize(newWidth, newHeight);
@@ -377,10 +325,7 @@ export class DebugObject {
     this.object?.setPosition(x, y);
     this.verticalHandle?.setPosition(x, this.getVerticalHandleY(y));
     this.horizontalHandle?.setPosition(this.getHorizontalHandleX(x), y);
-    this.bothHandle?.setPosition(
-      this.getHorizontalHandleX(x),
-      this.getVerticalHandleY(y),
-    );
+    this.bothHandle?.setPosition(this.getHorizontalHandleX(x), this.getVerticalHandleY(y));
     this.updateOriginPointPosition();
     this.drawTextInfo();
   };
@@ -401,10 +346,7 @@ export class DebugObject {
     this.object?.setPosition(x, y);
     this.verticalHandle?.setPosition(x, this.getVerticalHandleY(y));
     this.horizontalHandle?.setPosition(this.getHorizontalHandleX(x), y);
-    this.bothHandle?.setPosition(
-      this.getHorizontalHandleX(x),
-      this.getVerticalHandleY(y),
-    );
+    this.bothHandle?.setPosition(this.getHorizontalHandleX(x), this.getVerticalHandleY(y));
     this.updateOriginPointPosition();
     this.drawTextInfo();
   };
@@ -414,15 +356,9 @@ export class DebugObject {
     const aspectRatio = this.object.displayWidth / this.object.displayHeight;
     const keepAspectRatio = this.shiftKey?.isDown;
 
-    const newHeight =
-      y -
-      this.object.y +
-      this.object.displayHeight * this.object.originY +
-      VERTICAL_HANDLE_HEIGHT;
+    const newHeight = y - this.object.y + this.object.displayHeight * this.object.originY + VERTICAL_HANDLE_HEIGHT;
 
-    const newWidth = keepAspectRatio
-      ? newHeight * aspectRatio
-      : this.object.displayWidth;
+    const newWidth = keepAspectRatio ? newHeight * aspectRatio : this.object.displayWidth;
 
     this.rectangle?.setDisplaySize(newWidth, newHeight);
     this.object?.setDisplaySize(newWidth, newHeight);
@@ -434,29 +370,14 @@ export class DebugObject {
   };
 
   private updateHandlesPositions = () => {
-    this.verticalHandle?.setDisplaySize(
-      this.object.displayWidth,
-      VERTICAL_HANDLE_HEIGHT,
-    );
-    this.horizontalHandle?.setDisplaySize(
-      VERTICAL_HANDLE_HEIGHT,
-      this.object.displayHeight,
-    );
+    this.verticalHandle?.setDisplaySize(this.object.displayWidth, VERTICAL_HANDLE_HEIGHT);
+    this.horizontalHandle?.setDisplaySize(VERTICAL_HANDLE_HEIGHT, this.object.displayHeight);
 
-    this.verticalHandle?.setPosition(
-      this.object.x,
-      this.getVerticalHandleY(this.object.y),
-    );
+    this.verticalHandle?.setPosition(this.object.x, this.getVerticalHandleY(this.object.y));
 
-    this.horizontalHandle?.setPosition(
-      this.getHorizontalHandleX(this.object.x),
-      this.object.y,
-    );
+    this.horizontalHandle?.setPosition(this.getHorizontalHandleX(this.object.x), this.object.y);
 
-    this.bothHandle?.setPosition(
-      this.getHorizontalHandleX(this.object.x),
-      this.getVerticalHandleY(this.object.y),
-    );
+    this.bothHandle?.setPosition(this.getHorizontalHandleX(this.object.x), this.getVerticalHandleY(this.object.y));
   };
 
   private onBothResizeDrag = ({ x, y }: Phaser.Math.Vector2) => {
@@ -465,23 +386,15 @@ export class DebugObject {
   };
 
   private getVerticalHandleY = (y: number): number =>
-    y +
-    this.object.displayHeight * (1 - this.object.originY) -
-    VERTICAL_HANDLE_HEIGHT * (1 - this.object.originY);
+    y + this.object.displayHeight * (1 - this.object.originY) - VERTICAL_HANDLE_HEIGHT * (1 - this.object.originY);
 
   private getHorizontalHandleX = (x: number): number =>
-    x +
-    this.object.displayWidth * (1 - this.object.originX) -
-    VERTICAL_HANDLE_HEIGHT * (1 - this.object.originX);
+    x + this.object.displayWidth * (1 - this.object.originX) - VERTICAL_HANDLE_HEIGHT * (1 - this.object.originX);
 
   private updateOriginPointPosition = () => {
     this.originPoint?.setPosition(
-      this.object.x -
-        this.object.displayWidth * this.object.originX +
-        this.object.displayWidth * this.originX,
-      this.object.y -
-        this.object.displayHeight * this.object.originY +
-        this.object.displayHeight * this.originY,
+      this.object.x - this.object.displayWidth * this.object.originX + this.object.displayWidth * this.originX,
+      this.object.y - this.object.displayHeight * this.object.originY + this.object.displayHeight * this.originY,
     );
   };
 
@@ -492,15 +405,9 @@ export class DebugObject {
     const realOriginX = originX ?? this.originX;
     const realOriginY = originY ?? this.originY;
 
-    const x =
-      this.object.x -
-      this.object.displayWidth * this.object.originX +
-      this.object.displayWidth * realOriginX;
+    const x = this.object.x - this.object.displayWidth * this.object.originX + this.object.displayWidth * realOriginX;
 
-    const y =
-      this.object.y -
-      this.object.displayHeight * this.object.originY +
-      this.object.displayHeight * realOriginY;
+    const y = this.object.y - this.object.displayHeight * this.object.originY + this.object.displayHeight * realOriginY;
 
     const scaleX = this.object.displayWidth / this.initialWidth;
     const scaleXRounded = Math.round(scaleX * orm) / orm;
